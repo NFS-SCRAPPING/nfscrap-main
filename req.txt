@@ -1,0 +1,15 @@
+list pakage
+composer require laravel/passport
+composer require maatwebsite/excel
+composer require barryvdh/laravel-dompdf
+composer require intervention/image
+composer require nesbot/carbon
+composer require guzzlehttp/guzzle
+composer require ixudra/curl
+https://github.com/markrogoyski/math-php
+
+
+
+
+catatan
+semua menggunakan uuid
