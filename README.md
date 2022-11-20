@@ -1,3 +1,32 @@
+INI ADALAH BASE FRAMEWORK LARAVEL SUDAH DI CONFIG AUTH, MIDELWARE DAN SUDAH ADA HELPER
+
+list pakage
+composer require laravel/passport
+composer require maatwebsite/excel
+composer require barryvdh/laravel-dompdf
+composer require intervention/image
+composer require nesbot/carbon
+composer require guzzlehttp/guzzle
+composer require ixudra/curl
+https://github.com/markrogoyski/math-php
+
+
+
+
+catatan
+semua menggunakan uuid
+
+cara menjalankan
+
+pertama kalian clone dlu
+
+1.composer update
+2.php artisan migrate
+3.php artisan passport:install
+4.php artisan db:seed
+5.php artisan storage:link
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
