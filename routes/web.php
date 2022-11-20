@@ -14,5 +14,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    
     return view('welcome');
+
+});
+
+Route::middleware(['web'])->group(function () {
+
+    Route::group(['middleware' => ['auth']], function () {
+
+        
+
+        Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
+
+        });
+
+    });
+
+    
+
+    Route::group(['middleware' => ['guest']], function () {
+    
+    });
+
+    Route::group(['middleware' => ['guest','throttle:6,1']], function () {
+
+    });
+
+
 });

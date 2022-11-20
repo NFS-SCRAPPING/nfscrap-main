@@ -182,12 +182,12 @@ return [
         //HELPER
         App\Providers\CronServiceProvider::class,
         App\Providers\DateServiceProvider::class,
-        App\Providers\FibonanciProvider::class,
-        App\Providers\HelperProvider::class,
-        App\Providers\NfsProvider::class,
-        App\Providers\PaymentProvider::class,
-        App\Providers\SmsProvider::class,
-        App\Providers\WaProvider::class,
+        App\Providers\FibonanciServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
+        App\Providers\NfsServiceProvider::class,
+        App\Providers\PaymentServiceProvider::class,
+        App\Providers\SmsServiceProvider::class,
+        App\Providers\WaServiceProvider::class,
 
     ],
 
