@@ -177,7 +177,10 @@
                 </div>
               </div>
               <div class="preview-item-content">
-                <p class="preview-subject mb-1">Log out</p>
+                <form action="{{url('logout')}}" id="logout" method="POST">
+                  @csrf
+                </form>
+                <p class="preview-subject mb-1" onclick="logout()">Log out</p>
               </div>
             </a>
             <div class="dropdown-divider"></div>
@@ -190,3 +193,11 @@
       </button>
     </div>
   </nav>
+
+  @push('js')
+      <script>
+          function logout(){
+            document.getElementById("logout").submit();
+          }
+      </script>    
+  @endpush

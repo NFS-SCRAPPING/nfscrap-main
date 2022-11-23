@@ -68,6 +68,8 @@ class AuthController extends Controller
             Session::put('id',$user->id);
 
             return redirect()->intended('dashboard');
+        }else{
+            return back()->with('error','somethings else please try again');
         }
     }
 
@@ -112,6 +114,19 @@ class AuthController extends Controller
     public function validasiOtp()
     {
         //
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+     
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+
+        Session::flush();
+     
+        return redirect('login')->with('success','Thanks !!!');
     }
 
 }

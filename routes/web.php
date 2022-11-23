@@ -20,6 +20,8 @@ Route::middleware(['web'])->group(function () {
 
         Route::get('dashboard','Admin\DashboardController@index')->name('dashboard');
 
+        Route::post('logout','AuthController@logout');
+
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 
         });
@@ -35,6 +37,8 @@ Route::middleware(['web'])->group(function () {
     });
 
     Route::group(['middleware' => ['guest','throttle:6,1']], function () {
+
+        Route::post('sign-in','AuthController@login');
 
     });
 
