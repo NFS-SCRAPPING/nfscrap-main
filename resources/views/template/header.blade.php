@@ -176,11 +176,11 @@
                   <i class="mdi mdi-logout text-danger"></i>
                 </div>
               </div>
-              <div class="preview-item-content">
+              <div class="preview-item-content" onclick="logout()">
                 <form action="{{url('logout')}}" id="logout" method="POST">
                   @csrf
                 </form>
-                <p class="preview-subject mb-1" onclick="logout()">Log out</p>
+                <p class="preview-subject mb-1">Log out</p>
               </div>
             </a>
             <div class="dropdown-divider"></div>

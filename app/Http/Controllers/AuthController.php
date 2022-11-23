@@ -53,9 +53,9 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
  
         if (Auth::attempt($credentials)) {
-
+            
             #CREATE NEW TOKEN
-            $token_app=ENV('TOKEN_APP');
+            $token_app=env('TOKEN_APP');
             $token = auth()->user()->createToken($token_app)->accessToken;
             $user = Auth::user();
 
