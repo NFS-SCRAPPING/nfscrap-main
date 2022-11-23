@@ -18,7 +18,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::group(['middleware' => ['auth']], function () {
 
-        Route::get('dashboard','Admin\DashboardController@index')->namespace('dashboard');
+        Route::get('dashboard','Admin\DashboardController@index')->name('dashboard');
 
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 
@@ -29,8 +29,8 @@ Route::middleware(['web'])->group(function () {
     
 
     Route::group(['middleware' => ['guest']], function () {
-        Route::get('login','Admin\GuestController@login')->namespace('login');
-        Route::get('register','Admin\GuestController@register')->namespace('register');
+        Route::get('login','Admin\GuestController@login')->name('login');
+        Route::get('register','Admin\GuestController@register')->name('register');
     });
 
     Route::group(['middleware' => ['guest','throttle:6,1']], function () {
