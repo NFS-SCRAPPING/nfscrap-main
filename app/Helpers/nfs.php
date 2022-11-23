@@ -10,4 +10,8 @@ use Illuminate\Support\Facades\DB;
  
 class Nfs {
    
+    public static function app(){
+        return "NFScrap";
+    }
+
 }

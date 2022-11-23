@@ -22,6 +22,11 @@ class GuestController extends Controller
         return view('admin.auth.register');
     }
 
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

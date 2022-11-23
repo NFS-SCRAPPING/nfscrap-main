@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{url('assets/images/favicon.png')}}" />
+    <style>
+       .card{
+        border-radius: 10px !important;
+       }
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -25,7 +30,7 @@
           <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
-                <h3 class="card-title text-left mb-3">Register</h3>
+                <h3 class="card-title text-left mb-3">Sign-Up <a href="{{url('/')}}" style="color: orangered">{{Nfs::app()}}</a></h3>
                 <form>
                   <div class="form-group">
                     <label>Username</label>
@@ -56,7 +61,6 @@
                       <i class="mdi mdi-google-plus"></i> Google plus </button>
                   </div>
                   <p class="sign-up text-center">Already have an Account?<a href="{{url('login')}}"> Sign Up</a></p>
-                  <p class="terms">By creating an account you are accepting our<a href="#"> Terms & Conditions</a></p>
                 </form>
               </div>
             </div>
