@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use Hash;
 
 class User extends Authenticatable
 {
@@ -43,4 +44,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function save_data($request){
+
+        $save = User::insert([
+            "name"          =>$request->name,
+            "email"         =>$request->email,
+            "phone"         =>$request->phone,
+            "password"      =>Hash::make($request->password),
+            "created_at"    =>date('Y-m-d H:i:s'),
+            "role_id"       =>2
+        ]);
+
+        return $save;
+    }
 }

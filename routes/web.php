@@ -33,12 +33,15 @@ Route::middleware(['web'])->group(function () {
     Route::group(['middleware' => ['guest']], function () {
         Route::get('login','Admin\GuestController@login')->name('login');
         Route::get('register','Admin\GuestController@register')->name('register');
+        Route::get('forget','Admin\GuestController@forget')->name('forget');
         Route::get('/','Admin\GuestController@welcome')->name('welcome');
     });
 
     Route::group(['middleware' => ['guest','throttle:6,1']], function () {
 
         Route::post('sign-in','AuthController@login');
+        Route::post('sign-up','AuthController@register');
+        Route::post('forget-password','AuthController@forget_password');
 
     });
 

@@ -35,7 +35,20 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        //
+        $request->validate([
+            'name'      => 'required|string',
+            'email'     => 'required|email:rfc,dns|unique:users,email',
+            'password'  => 'required',
+            'phone'     => 'required|unique:users,phone',
+        ]);
+
+        $check_user = User::save_data($request); 
+
+        if($check_user){
+            return redirect('/login')->with('success','You have successfully registered, please login');
+        }else{
+            return back()->with('error','somethings else please try again');
+        }
     }
 
     /**
@@ -63,6 +76,8 @@ class AuthController extends Controller
             $user = User::where('email',$request->email)->first();
 
             #ADD SESSION
+            Session::put('name',$user->name);
+            Session::put('phone',$user->phone);
             Session::put('email',$request->email);
             Session::put('token',$token);
             Session::put('id',$user->id);
@@ -79,9 +94,11 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function forgotPassword(Request $request)
+    public function forget_password(Request $request)
     {
-        //
+        $request->validate([
+            'email'     => 'required|email:rfc,dns',
+        ]);
     }
 
     /**

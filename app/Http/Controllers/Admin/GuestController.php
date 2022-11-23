@@ -22,6 +22,11 @@ class GuestController extends Controller
         return view('admin.auth.register');
     }
 
+    public function forget()
+    {
+        return view('admin.auth.forget');
+    }
+
     public function welcome()
     {
         return view('welcome');

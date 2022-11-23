@@ -8,6 +8,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{url('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/vendors/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet" href="{{url('assets/vendors/sweetalert2/sweetalert2.min.css')}}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -16,7 +17,10 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{url('assets/images/favicon.png')}}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url('web/assets/img/favicons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url('web/assets/img/favicons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url('web/assets/img/favicons/favicon-16x16.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('web/assets/img/favicons/favicon.ico')}}">
     <style>
       .card{
        border-radius: 10px !important;
@@ -80,16 +84,10 @@
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input"> Remember me </label>
                     </div>
-                    <a href="#" class="forgot-pass">Forgot password</a>
+                    <a href="{{url('forget')}}" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-facebook mr-2 col">
-                      <i class="mdi mdi-facebook"></i> Facebook </button>
-                    <button class="btn btn-google col">
-                      <i class="mdi mdi-google-plus"></i> Google plus </button>
                   </div>
                   <p class="sign-up">Don't have an Account?<a href="{{url('register')}}"> Sign Up</a></p>
                 </form>
@@ -105,6 +103,7 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{url('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+    <script src="{{url('assets/vendors/sweetalert2/sweetalert2.min.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
