@@ -13,17 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    
-    return view('welcome');
-
-});
 
 Route::middleware(['web'])->group(function () {
 
     Route::group(['middleware' => ['auth']], function () {
 
-        
+        Route::get('dashboard','Admin\DashboardController@index')->namespace('dashboard');
 
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 
@@ -34,7 +29,8 @@ Route::middleware(['web'])->group(function () {
     
 
     Route::group(['middleware' => ['guest']], function () {
-    
+        Route::get('login','Admin\GuestController@login')->namespace('login');
+        Route::get('register','Admin\GuestController@register')->namespace('register');
     });
 
     Route::group(['middleware' => ['guest','throttle:6,1']], function () {
