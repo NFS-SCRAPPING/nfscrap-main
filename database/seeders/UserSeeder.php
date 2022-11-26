@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'name'  =>'nonscrap',
                 'email'=>'superadmin@nonscrap.com',
                 'phone'=>'088220148340',
+                'status'=>'active',
                 'password'=>Hash::make('123456')
             ],
 
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
                 'name'  =>'nonscrap',
                 'email'=>'admin@nonscrap.com',
                 'phone'=>'082238982100',
+                'status'=>'active',
                 'password'=>Hash::make('123456')
             ],
 

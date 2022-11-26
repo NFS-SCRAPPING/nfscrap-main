@@ -66,24 +66,27 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
  
         if (Auth::attempt($credentials)) {
-            
-            #CREATE NEW TOKEN
-            $token_app=env('TOKEN_APP');
-            $token = auth()->user()->createToken($token_app)->accessToken;
-            $user = Auth::user();
-
             #GET DATA USERS
             $user = User::where('email',$request->email)->first();
+            if($user->status == 'active'){
+                #CREATE NEW TOKEN
+                $token_app=env('TOKEN_APP');
+                $token = auth()->user()->createToken($token_app)->accessToken;
+                $user = Auth::user();
+                #ADD SESSION
+                Session::put('name',$user->name);
+                Session::put('phone',$user->phone);
+                Session::put('email',$request->email);
+                Session::put('token',$token);
+                Session::put('id',$user->id);
+                Session::put('cms_role_id',$user->cms_role_id);
 
-            #ADD SESSION
-            Session::put('name',$user->name);
-            Session::put('phone',$user->phone);
-            Session::put('email',$request->email);
-            Session::put('token',$token);
-            Session::put('id',$user->id);
-            Session::put('cms_role_id',$user->cms_role_id);
-
-            return redirect()->intended('dashboard');
+                return redirect()->intended('dashboard');
+            }elseif($user->status == 'notactive'){
+                return back()->with('error','please check email to verification account');
+            }else{
+                return back()->with('error','your account suspend by admin, please contact admin to solve this problem');
+            }
         }else{
             return back()->with('error','somethings else please try again');
         }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
-#PACKAGE
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -27,7 +26,7 @@ use Wa;
 use App\Models\User;
 use App\Models\Cms\Role;
 
-class RoleController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,14 +35,15 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $list['title'] = 'Management Role';
+        $list['title'] = 'Management Users';
+        
         if(Session::get('cms_role_id')==1){
-            $list['data'] = Role::all();
+            $list['data'] = User::all();
         }else{
-            $list['data'] = Role::where('id','!=',1)->get();
+            $list['data'] = User::where('cms_role_id','!=',1)->get();
         }
         
-        return view('admin.cms.role.index',$list);
+        return view('admin.cms.user.index',$list);
     }
 
     /**

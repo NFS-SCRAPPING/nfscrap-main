@@ -14,6 +14,9 @@
                         <thead>
                           <tr>
                             <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -21,6 +24,9 @@
                           @foreach($data as $key)
                           <tr>
                             <td>{{$key->name}}</td>
+                            <td>{{$key->email}}</td>
+                            <td>{{$key->phone}}</td>
+                            <td>{{$key->status}}</td>
                             <td>
                               <a href="" class="btn btn-sm btn-primary">detail</a>
                               <a href="" class="btn btn-sm btn-warning">edit</a>
