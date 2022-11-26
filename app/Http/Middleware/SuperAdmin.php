@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
-class Admin
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Session::get('cms_role_id')==1 || Session::get('cms_role_id')==2){
+        if(Auth::check() && Session::get('cms_role_id')==1){
             return $next($request);
         }else{
             return redirect()->back()->with('message','Anda Tidak Memiliki Akses !!!')->with('message_type','danger');

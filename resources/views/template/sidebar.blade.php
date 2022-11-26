@@ -1,14 +1,14 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-      <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-      <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo" href="{{url('dashboard')}}"><img src="{{url('assets/images/logo.svg')}}" alt="logo" /></a>
+      <a class="sidebar-brand brand-logo-mini" href="{{url('dashboard')}}"><img src="{{url('assets/images/logo-mini.svg')}}" alt="logo" /></a>
     </div>
     <ul class="nav">
       <li class="nav-item profile">
         <div class="profile-desc">
           <div class="profile-pic">
             <div class="count-indicator">
-              <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+              <img class="img-xs rounded-circle " src="{{url('assets/images/faces/profile.png')}}" alt="">
               <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
@@ -57,21 +57,25 @@
         <span class="nav-link">Navigation</span>
       </li>
 
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
-          <span class="menu-icon">
-            <i class="mdi mdi-speedometer"></i>
-          </span>
-          <span class="menu-title">Dashboard</span>
-        </a>
-      </li>
+      @auth
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="{{url('dashboard')}}">
+            <span class="menu-icon">
+              <i class="mdi mdi-speedometer"></i>
+            </span>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+      @endauth
 
+      @if(Session::get('cms_role_id') ==1 or Session::get('cms_role_id') ==2 )
+      @auth
       <li class="nav-item nav-category">
         <span class="nav-link">Panel Admin</span>
       </li>
 
       <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('admin/role')}}">
           <span class="menu-icon">
             <i class="mdi mdi-key"></i>
           </span>
@@ -105,47 +109,53 @@
           <span class="menu-title">Log Users Access</span>
         </a>
       </li>
+      @endauth
+      @endif
 
 
-      <li class="nav-item nav-category">
-        <span class="nav-link">Panel Superadmin</span>
-      </li>
+      @if(Session::get('cms_role_id') ==1)
+      @auth
+        <li class="nav-item nav-category">
+          <span class="nav-link">Panel Superadmin</span>
+        </li>
 
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
-          <span class="menu-icon">
-            <i class="mdi mdi-format-list-bulleted-type"></i>
-          </span>
-          <span class="menu-title">Menu Management</span>
-        </a>
-      </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="index.html">
+            <span class="menu-icon">
+              <i class="mdi mdi-format-list-bulleted-type"></i>
+            </span>
+            <span class="menu-title">Menu Management</span>
+          </a>
+        </li>
 
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
-          <span class="menu-icon">
-            <i class="mdi mdi-code-not-equal-variant"></i>
-          </span>
-          <span class="menu-title">Module Generator</span>
-        </a>
-      </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="index.html">
+            <span class="menu-icon">
+              <i class="mdi mdi-code-not-equal-variant"></i>
+            </span>
+            <span class="menu-title">Module Generator</span>
+          </a>
+        </li>
 
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
-          <span class="menu-icon">
-            <i class="mdi mdi-source-merge"></i>
-          </span>
-          <span class="menu-title">API Generator</span>
-        </a>
-      </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="index.html">
+            <span class="menu-icon">
+              <i class="mdi mdi-source-merge"></i>
+            </span>
+            <span class="menu-title">API Generator</span>
+          </a>
+        </li>
 
-      <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
-          <span class="menu-icon">
-            <i class="mdi mdi-email"></i>
-          </span>
-          <span class="menu-title">Email Templates</span>
-        </a>
-      </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="index.html">
+            <span class="menu-icon">
+              <i class="mdi mdi-email"></i>
+            </span>
+            <span class="menu-title">Email Templates</span>
+          </a>
+        </li>
+      @endauth
+      @endif
 
     </ul>
   </nav>

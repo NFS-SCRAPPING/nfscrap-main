@@ -33,6 +33,10 @@ Route::middleware(['web'])->group(function () {
             Route::post('role/store','Cms\RoleController@store')->name('role-store');
             Route::post('role/update','Cms\RoleController@update')->name('role-update');
 
+            Route::group(['middleware' => ['superadmin']], function () {
+
+            });
+
         });
 
     });

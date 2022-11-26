@@ -81,6 +81,7 @@ class AuthController extends Controller
             Session::put('email',$request->email);
             Session::put('token',$token);
             Session::put('id',$user->id);
+            Session::put('cms_role_id',$user->cms_role_id);
 
             return redirect()->intended('dashboard');
         }else{

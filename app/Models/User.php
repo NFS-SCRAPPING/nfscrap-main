@@ -53,7 +53,7 @@ class User extends Authenticatable
             "phone"         =>$request->phone,
             "password"      =>Hash::make($request->password),
             "created_at"    =>date('Y-m-d H:i:s'),
-            "role_id"       =>2
+            "cms_role_id"   =>3
         ]);
 
         return $save;

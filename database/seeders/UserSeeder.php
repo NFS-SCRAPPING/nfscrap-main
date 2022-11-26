@@ -17,11 +17,22 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'role_id' => 1,
-            'name'  =>'nfscrap',
-            'email'=>'nikofigit@gmail.com',
-            'phone'=>'088220148340',
-            'password'=>Hash::make('123456')
+            [
+                'cms_role_id' => 1,
+                'name'  =>'nonscrap',
+                'email'=>'superadmin@nonscrap.com',
+                'phone'=>'088220148340',
+                'password'=>Hash::make('123456')
+            ],
+
+            [
+                'cms_role_id' => 2,
+                'name'  =>'nonscrap',
+                'email'=>'admin@nonscrap.com',
+                'phone'=>'082238982100',
+                'password'=>Hash::make('123456')
+            ],
+
 
         ]);
     }
