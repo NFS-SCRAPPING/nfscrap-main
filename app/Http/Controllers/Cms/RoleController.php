@@ -37,6 +37,7 @@ class RoleController extends Controller
     public function index()
     {
         $list['title'] = 'Management Role';
+        
         if(Session::get('cms_role_id')==1){
             $list['data'] = Role::all();
         }else{
