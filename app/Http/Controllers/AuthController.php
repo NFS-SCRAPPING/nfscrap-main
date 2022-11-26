@@ -24,7 +24,7 @@ use Payments;
 use Wa;
 #MODEL
 use App\Models\User;
-use App\Models\Role;
+use App\Models\Cms\Role;
 
 class AuthController extends Controller
 {

@@ -24,6 +24,15 @@ Route::middleware(['web'])->group(function () {
 
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 
+            Route::get('role','Cms\RoleController@index')->name('role');
+            Route::get('role/create','Cms\RoleController@create')->name('role-create');
+            Route::get('role/detail/{id}','Cms\RoleController@index')->name('role-detail');
+            Route::get('role/edit/{id}','Cms\RoleController@index')->name('role-edit');
+            Route::get('role/delete/{id}','Cms\RoleController@index')->name('role-delete');
+
+            Route::post('role/store','Cms\RoleController@store')->name('role-store');
+            Route::post('role/update','Cms\RoleController@update')->name('role-update');
+
         });
 
     });
