@@ -19,7 +19,19 @@
 
             <div class="main-panel">
 
+              <div class="content-wrapper">
+
+                @if ($errors->any() || session()->has('message'))
+                <div class="row">
+                  <div class="col-sm-12">
+                    @include('template.alert')
+                  </div>
+                </div>
+                @endif
+
                 @yield('content')
+
+              </div>
 
                 @include('template.footer')
 

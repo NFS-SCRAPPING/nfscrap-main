@@ -12,6 +12,8 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
+
+    <link rel="stylesheet" href="{{url('custom/css/custom.css')}}">
     <!-- End layout styles -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{url('web/assets/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{url('web/assets/img/favicons/favicon-32x32.png')}}">

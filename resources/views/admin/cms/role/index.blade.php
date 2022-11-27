@@ -1,8 +1,12 @@
 @extends('template.content')
 @section('content')
 
-<div class="content-wrapper">
+
     <div class="row">
+      <div class="col-sm-12 mb-10">
+        <a href="{{url('admin/role/create')}}" class="btn btn-success btn-fw">add data</a>
+      </div>
+
         <div class="col-sm-12">
             
                 <div class="card">
@@ -22,8 +26,8 @@
                           <tr>
                             <td>{{$key->name}}</td>
                             <td>
-                              <a href="" class="btn btn-sm btn-primary">detail</a>
-                              <a href="" class="btn btn-sm btn-warning">edit</a>
+                              <a href="{{url('admin/role/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
+                              <a href="{{url('admin/role/edit/'.$key->id)}}" class="btn btn-sm btn-warning">edit</a>
                             </td>
                           </tr>
                           @endforeach
@@ -34,8 +38,6 @@
                 </div>
 
         </div>
-
     </div>
-</div>
 
 @endsection

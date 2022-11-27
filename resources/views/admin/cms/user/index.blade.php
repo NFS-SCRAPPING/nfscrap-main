@@ -1,7 +1,6 @@
 @extends('template.content')
 @section('content')
 
-<div class="content-wrapper">
     <div class="row">
         <div class="col-sm-12">
             
@@ -28,8 +27,8 @@
                             <td>{{$key->phone}}</td>
                             <td>{{$key->status}}</td>
                             <td>
-                              <a href="" class="btn btn-sm btn-primary">detail</a>
-                              <a href="" class="btn btn-sm btn-warning">edit</a>
+                              <a href="{{url('admin/users/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
+                              <a href="{{url('admin/users/edit/'.$key->id)}}" class="btn btn-sm btn-warning">edit</a>
                             </td>
                           </tr>
                           @endforeach
@@ -38,10 +37,7 @@
                     </div>
                   </div>
                 </div>
-
         </div>
-
     </div>
-</div>
 
 @endsection

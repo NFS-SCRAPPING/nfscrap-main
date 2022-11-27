@@ -54,7 +54,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $data['title']   = 'Create Role';
+        $data['subtitle']= 'this is the management roles menu';
+        return view('admin.cms.role.create',$data);
     }
 
     /**
@@ -65,7 +67,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'      => 'required|string|unique:cms_role,name',
+        ]);
+
+        $save = Role::create(['name'=>$request->name]);
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -76,7 +88,10 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['title']   = 'Detail Role';
+        $data['subtitle']= 'this is the management roles menu';
+        $data['row']     = Role::where('id',$id)->first();
+        return view('admin.cms.role.show',$data);
     }
 
     /**

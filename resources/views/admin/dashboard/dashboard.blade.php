@@ -1,16 +1,6 @@
 @extends('template.content')
 @section('content')
 
-<div class="content-wrapper">
-
-  @if ($errors->any() || session()->has('message'))
-  <div class="row">
-    <div class="col-sm-12">
-      @include('template.alert')
-    </div>
-  </div>
-  @endif
-
     <div class="row">
       <div class="col-12 grid-margin stretch-card">
         <div class="card corona-gradient-card">
@@ -671,6 +661,5 @@
         </div>
       </div>
     </div>
-  </div>
     
 @endsection

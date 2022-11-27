@@ -7,15 +7,21 @@
             <div class="card-body">
               <h4 class="card-title">{{$title}}</h4>
               <p class="card-description"> {{$subtitle}} </p>
-              <form class="forms-sample" method="POST" action="{{url('admin/role/store')}}" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="name">
-                </div>
-                <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i>&nbsp;Submit</button>
+              
+              <div class="table-responsive">
+                <table class="table table-borderless">
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{$row->name}}</td>
+                    </tr>
+                </table>
+              </div>
+
+              <div class="mt-10">
                 <a class="btn btn-success" href="{{url('admin/role')}}"><i class="mdi mdi-arrow-left-thick"></i>&nbsp;Back</a>
-              </form>
+              </div>
+
             </div>
           </div>
         </div>
