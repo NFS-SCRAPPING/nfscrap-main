@@ -38,9 +38,13 @@ class UsersController extends Controller
         $list['title'] = 'Management Users';
         
         if(Session::get('cms_role_id')==1){
-            $list['data'] = User::all();
+            $list['data'] = User::join('cms_role','users.cms_role_id','=','cms_role.id')
+                            ->select('users.*','cms_role.name as cms_role_name')->get();
         }else{
-            $list['data'] = User::where('cms_role_id','!=',1)->get();
+            $list['data'] = User::join('cms_role','users.cms_role_id','=','cms_role.id')
+                            ->where('users.cms_role_id','!=',1)
+                            ->select('users.*','cms_role.name as cms_role_name')
+                            ->get();
         }
         
         return view('admin.cms.users.index',$list);

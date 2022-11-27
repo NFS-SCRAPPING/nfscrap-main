@@ -18,6 +18,7 @@
                         <thead>
                           <tr>
                             <th>Name</th>
+                            <th>Role</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
@@ -28,6 +29,7 @@
                           @foreach($data as $key)
                           <tr>
                             <td>{{$key->name}}</td>
+                            <td>{{$key->cms_role_name}}</td>
                             <td>{{$key->email}}</td>
                             <td>{{$key->phone}}</td>
                             <td>{{$key->status}}</td>

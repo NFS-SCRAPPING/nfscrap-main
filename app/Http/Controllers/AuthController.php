@@ -45,6 +45,8 @@ class AuthController extends Controller
         $check_user = User::save_data($request); 
 
         if($check_user){
+            Nfs::insertLogs('Register via web');
+
             return redirect('/login')->with('success','You have successfully registered, please login');
         }else{
             return back()->with('error','somethings else please try again');
@@ -80,6 +82,8 @@ class AuthController extends Controller
                 Session::put('token',$token);
                 Session::put('id',$user->id);
                 Session::put('cms_role_id',$user->cms_role_id);
+
+                Nfs::insertLogs('login web');
 
                 return redirect()->intended('dashboard');
             }elseif($user->status == 'notactive'){

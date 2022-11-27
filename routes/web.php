@@ -45,6 +45,8 @@ Route::middleware(['web'])->group(function () {
             Route::post('users/action/{slug}/{id}','Cms\UsersController@action');
             Route::post('users/submodule/{table}/{foreign_key}','Cms\UsersController@submodule');
 
+            Route::get('logs','Cms\CmsLogsController@index')->name('logs');
+
             Route::group(['middleware' => ['superadmin']], function () {
 
             });
