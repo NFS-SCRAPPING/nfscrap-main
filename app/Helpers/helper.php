@@ -9,5 +9,6 @@ use Image;
 use Illuminate\Support\Facades\DB;
  
 class Helper {
+
    
 }

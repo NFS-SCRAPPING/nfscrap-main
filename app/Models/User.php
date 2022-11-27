@@ -24,7 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
-        'status'
+        'status',
+        'cms_role_id'
     ];
 
     /**

@@ -102,7 +102,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title']   = 'Edit Role';
+        $data['subtitle']= 'this is the management roles menu';
+        $data['row']     = Role::where('id',$id)->first();
+        return view('admin.cms.role.edit',$data);
     }
 
     /**
@@ -112,9 +115,32 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id'        => 'required',
+            'name'      => 'required|string',
+        ]);
+
+        $fetch_one = Role::where('id',$request->id)->first();
+
+        if($request->name == $fetch_one->name){
+            $update = true;
+        }else{
+
+            $request->validate([
+                'name'      => 'required|string|unique:cms_role,name',
+            ]);
+
+            $update = Role::where('id',$request->id)->update(['name'=>$request->name]);
+
+        }
+
+        if($update){
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
+        }
     }
 
     /**
