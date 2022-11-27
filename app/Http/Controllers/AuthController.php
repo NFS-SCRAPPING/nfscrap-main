@@ -143,6 +143,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        Nfs::insertLogs('Logout via web');
+        
         Auth::logout();
      
         $request->session()->invalidate();
