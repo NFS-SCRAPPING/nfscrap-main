@@ -37,6 +37,11 @@
                         </tbody>
                       </table>
                     </div>
+
+                    <div class="mt-10">
+                      {{ $cms_logs->links('vendor.pagination.bootstrap-4') }}
+                    </div>
+
                   </div>
                 </div>
 

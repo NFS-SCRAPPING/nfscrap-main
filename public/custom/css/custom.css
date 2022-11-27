@@ -274,3 +274,10 @@
 .mr-100{
     margin-right: 100px;
 }
+
+/* style */
+.img-table{
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+}

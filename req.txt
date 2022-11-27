@@ -23,10 +23,12 @@ php artisan passport:install --uuids
 
 untuk mebambahkan migration di database
 php artisan vendor:publish --tag=passport-migrations
+php artisan vendor:publish --tag=laravel-pagination
 
 php artisan db:seed
 php artisan storage:link
 
+https://laravel-code.tips/threads/laravel-clean-code-tactics/
 
 kita rubah personal_access_tokens agar bisa digunakan di users yg uuid defaultnya string
 

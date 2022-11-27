@@ -17,3 +17,7 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{url('assets/js/dashboard.js')}}"></script>
+
+    <script src="{{url('assets/js/file-upload.js')}}"></script>
+    <script src="{{url('assets/js/typeahead.js')}}"></script>
+    <script src="{{url('assets/js/select2.js')}}"></script>

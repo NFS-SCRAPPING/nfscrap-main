@@ -47,6 +47,17 @@ Route::middleware(['web'])->group(function () {
 
             Route::get('logs','Cms\CmsLogsController@index')->name('logs');
 
+            Route::get('settings','Cms\CmsSettingsController@index')->name('settings');
+            Route::get('settings/create','Cms\CmsSettingsController@create')->name('settings-create');
+            Route::get('settings/show/{id}','Cms\CmsSettingsController@show')->name('settings-show');
+            Route::get('settings/edit/{id}','Cms\CmsSettingsController@edit')->name('settings-edit');
+            Route::get('settings/destroy/{id}','Cms\CmsSettingsController@destroy')->name('settings-destroy');
+            Route::post('settings/store','Cms\CmsSettingsController@store')->name('settings-store');
+            Route::post('settings/update','Cms\CmsSettingsController@update')->name('settings-update');
+            Route::post('settings/action/{slug}/{id}','Cms\CmsSettingsController@action');
+            Route::post('settings/submodule/{table}/{foreign_key}','Cms\CmsSettingsController@submodule');
+
+
             Route::group(['middleware' => ['superadmin']], function () {
 
             });

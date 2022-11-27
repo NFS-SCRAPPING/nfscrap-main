@@ -18,7 +18,8 @@ class CmsLogsController extends Controller
         $list['title'] = 'Logs Access Users';
         $list['cms_logs'] = CmsLogs::leftJoin('users','cms_logs.users_id','=','users.id')
                             ->select('users.name as users_name','cms_logs.*')
-                            ->get();
+                            ->orderBy('cms_logs.created_at','desc')
+                            ->paginate(20);
 
         return view('admin.cms.log.index',$list);
     }

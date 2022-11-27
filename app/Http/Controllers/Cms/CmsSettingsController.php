@@ -3,7 +3,30 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
+#PACKAGE
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
+use Ixudra\Curl\Facades\Curl;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
+use Validator;
+use Hash;
+#HELPER
+use Cron;
+use Date;
+use Fibonanci;
+use Helper;
+use Nfs;
+use Payments;
+use Wa;
+#MODEL
+use App\Models\User;
+use App\Models\Cms\Role;
+use App\Models\Cms\CmsSettings;
 
 class CmsSettingsController extends Controller
 {
@@ -14,7 +37,9 @@ class CmsSettingsController extends Controller
      */
     public function index()
     {
-        //
+        $list['title']          = 'Managemet Settings';
+        $list['cms_settings']   = CmsSettings::paginate(20);
+        return view('admin.cms.setting.index',$list);
     }
 
     /**
@@ -24,7 +49,9 @@ class CmsSettingsController extends Controller
      */
     public function create()
     {
-        //
+        $data['title']   = 'Create Settings';
+        $data['subtitle']= 'this is the management settings menu';
+        return view('admin.cms.setting.create',$data);
     }
 
     /**
