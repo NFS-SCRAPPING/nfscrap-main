@@ -62,7 +62,18 @@ class CmsSettingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                => 'required|string',
+            'value'               => 'required|string',
+        ]);
+
+        $save = CmsSettings::insertData($request);
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -73,7 +84,10 @@ class CmsSettingsController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['title']   = 'Detail Settings';
+        $data['subtitle']= 'this is the management settings menu';
+        $data['row']     = CmsSettings::find($id);
+        return view('admin.cms.setting.show',$data);
     }
 
     /**
@@ -84,7 +98,10 @@ class CmsSettingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title']   = 'Edit Settings';
+        $data['subtitle']= 'this is the management settings menu';
+        $data['row']     = CmsSettings::find($id);
+        return view('admin.cms.setting.edit',$data);
     }
 
     /**
@@ -94,9 +111,21 @@ class CmsSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id'                  => 'required',
+            'name'                => 'required|string',
+            'value'               => 'required|string',
+        ]);
+
+        $update = CmsSettings::updateData($request);
+        
+        if($update){
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -107,6 +136,12 @@ class CmsSettingsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = CmsSettings::where('id',$id)->delete();
+
+        if($delete){
+            return redirect()->back()->with('message','success delete data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed delete data')->with('message_type','warning');
+        }
     }
 }

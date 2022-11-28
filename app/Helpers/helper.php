@@ -48,4 +48,13 @@ class Helper {
         return $check;
     }
 
+    public static function upper($str){
+        return strtoupper($str);
+    }
+
+    public static function uc($str){
+        return ucfirst($str);
+    }
+
+
 }

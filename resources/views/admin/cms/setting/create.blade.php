@@ -7,28 +7,28 @@
             <div class="card-body">
               <h4 class="card-title">{{$title}}</h4>
               <p class="card-description"> {{$subtitle}} </p>
-              <form class="forms-sample" method="POST" action="{{url('admin/role/store')}}" enctype="multipart/form-data">
+              <form class="forms-sample" method="POST" action="{{url('admin/settings/store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
 
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                  <label for="name">{{Helper::uc('name')}}</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="name" required>
                 </div>
 
                 <div class="form-group">
 
-                    <label for="name">Value</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                    <label for="value">{{Helper::uc('value')}}</label>
+                    <input type="text" class="form-control" id="value" name="value" placeholder="value" required>
                   </div>
 
                 <div class="form-group">
-                    <label for="exampleTextarea1">Textarea</label>
-                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                    <label for="description">{{Helper::uc('description')}}</label>
+                    <textarea class="form-control" name="description" id="description" rows="4"></textarea>
                   </div>
 
                 <div class="form-group">
-                    <label>File upload</label>
-                    <input type="file" name="img[]" class="file-upload-default">
+                    <label>{{Helper::uc('file upload')}}</label>
+                    <input type="file" name="image" class="file-upload-default">
                     <div class="input-group col-sm-12">
                       <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                       <span class="input-group-append">
