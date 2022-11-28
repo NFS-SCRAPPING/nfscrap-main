@@ -1,7 +1,7 @@
     <script src="{{url('assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="{{url('assets/vendors/chart.js')}}/Chart.min.js')}}"></script>
+    <script src="{{url('assets/vendors/chart.js')}}"></script>
     <script src="{{url('assets/vendors/progressbar.js')}}/progressbar.min.js')}}"></script>
     <script src="{{url('assets/vendors/jvectormap/jquery-jvectormap.min.js')}}"></script>
     <script src="{{url('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
