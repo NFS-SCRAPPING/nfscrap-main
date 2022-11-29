@@ -28,6 +28,8 @@ php artisan vendor:publish --tag=laravel-pagination
 php artisan db:seed
 php artisan storage:link
 
+php artisan make:migration create_flights_table
+
 https://laravel-code.tips/threads/laravel-clean-code-tactics/
 
 kita rubah personal_access_tokens agar bisa digunakan di users yg uuid defaultnya string

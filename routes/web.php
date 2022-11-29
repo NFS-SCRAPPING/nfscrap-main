@@ -73,6 +73,8 @@ Route::middleware(['web'])->group(function () {
         Route::get('register','Admin\GuestController@register')->name('register');
         Route::get('forget','Admin\GuestController@forget')->name('forget');
         Route::get('/','Admin\GuestController@welcome')->name('welcome');
+
+        Route::get('test','TetsController@index');
     });
 
     Route::group(['middleware' => ['guest','throttle:6,1']], function () {
