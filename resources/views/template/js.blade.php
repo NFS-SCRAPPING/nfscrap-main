@@ -8,6 +8,7 @@
     <script src="{{url('assets/vendors/owl-carousel-2/owl.carousel.min.js')}}"></script>
     <script src="{{url('assets/vendors/sweetalert2/sweetalert2.min.js')}}"></script>
     <!-- End plugin js for this page -->
+    <script src="{{url('assets/vendors/select2/select2.min.js')}}"></script>
     <!-- inject:js -->
     <script src="{{url('assets/js/off-canvas.js')}}"></script>
     <script src="{{url('assets/js/hoverable-collapse.js')}}"></script>

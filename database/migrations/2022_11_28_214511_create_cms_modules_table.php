@@ -15,6 +15,7 @@ class CreateCmsModulesTable extends Migration
     {
         Schema::create('cms_modules', function (Blueprint $table) {
             $table->id();
+            $table->integer('cms_settings_id')->nullable();
             $table->string('name');
             $table->string('icon')->nullable();
             $table->string('middleware');

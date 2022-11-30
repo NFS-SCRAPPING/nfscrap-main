@@ -58,6 +58,17 @@ Route::middleware(['web'])->group(function () {
             Route::post('settings/submodule/{table}/{foreign_key}','Cms\CmsSettingsController@submodule');
 
 
+            Route::get('modules','Cms\CmsModulesController@index')->name('modules');
+            Route::get('modules/create','Cms\CmsModulesController@create')->name('modules-create');
+            Route::get('modules/show/{id}','Cms\CmsModulesController@show')->name('modules-show');
+            Route::get('modules/edit/{id}','Cms\CmsModulesController@edit')->name('modules-edit');
+            Route::get('modules/destroy/{id}','Cms\CmsModulesController@destroy')->name('modules-destroy');
+            Route::post('modules/store','Cms\CmsModulesController@store')->name('modules-store');
+            Route::post('modules/update','Cms\CmsModulesController@update')->name('modules-update');
+            Route::post('modules/action/{slug}/{id}','Cms\CmsModulesController@action');
+            Route::post('modules/submodule/{table}/{foreign_key}','Cms\CmsModulesController@submodule');
+
+
             Route::group(['middleware' => ['superadmin']], function () {
 
             });

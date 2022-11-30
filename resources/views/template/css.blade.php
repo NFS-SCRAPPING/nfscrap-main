@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{url('assets/vendors/owl-carousel-2/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/vendors/sweetalert2/sweetalert2.min.css')}}">
     <!-- End plugin css for this page -->
+    <link rel="stylesheet" href="{{url('assets/vendors/select2/select2.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css')}}">
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
