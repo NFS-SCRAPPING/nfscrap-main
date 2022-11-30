@@ -84,26 +84,32 @@ class Nfs {
         use App\Models\Cms\Role;
         use App\Models\Cms\CmsSettings;
 
-		class '.$controller.'Controller {
-
-		    function __construct() {    
-				$this->table       = "'.$table_name.'";        
-				$this->permalink   = "'.$permalink.'";    
-				$this->method_type = "'.$method_type.'";    
-		    }
+		class '.$controller.' extends Controller {
 		';
 
         $php .= "\n".'
-		    public function hook_before(&$postdata) {
-		        //This method will be execute before run the main process
+            /**
+             * Display a listing of the resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function index()
+            {
+		        
 
 		    }';
 
         $php .= "\n".'
-		    public function hook_query(&$query) {
-		        //This method is to customize the sql query
-
-		    }';
+            /**
+             * Show the form for creating a new resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function create()
+            {
+                
+            }
+        ';
 
         $php .= "\n".'
 		    public function hook_after($postdata,&$result) {
