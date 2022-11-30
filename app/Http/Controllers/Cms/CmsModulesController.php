@@ -97,7 +97,11 @@ class CmsModulesController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['title']          = 'Detail Modules';
+        $data['subtitle']       = 'this is the management modules generator';
+        $data['row']            = CmsModules::fetchOne($id);
+
+        return view('admin.cms.module.show',$data);
     }
 
     /**
@@ -108,7 +112,12 @@ class CmsModulesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title']          = 'Edit Modules';
+        $data['subtitle']       = 'this is the management modules generator';
+        $data['cms_settings']   = CmsSettings::all();
+        $data['row']            = CmsModules::fetchOne($id);
+        
+        return view('admin.cms.module.edit',$data);
     }
 
     /**
@@ -118,9 +127,30 @@ class CmsModulesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id'                  => 'required',
+            'name'                => 'required|string',
+            'icon'                => 'required|string',
+            'middleware'          => 'required|string',
+            'url'                 => 'required|string',
+            'controller'          => 'required|string',
+            'model'               => 'required|string',
+            'table'               => 'required|string',
+            'is_active'           => 'required|string',
+            'folder_controller'   => 'required|string',
+            'folder_model'        => 'required|string',
+            'folder_file'         => 'required|string',
+        ]);
+
+        $update = CmsModules::updateData($request);
+
+        if($update){
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
+        }
     }
 
     /**

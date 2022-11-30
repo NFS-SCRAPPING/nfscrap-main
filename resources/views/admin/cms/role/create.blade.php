@@ -13,8 +13,8 @@
                   <label for="name">Name</label>
                   <input type="text" class="form-control" id="name" name="name" placeholder="name">
                 </div>
-                <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i>&nbsp;Submit</button>
                 <a class="btn btn-success" href="{{url('admin/role')}}"><i class="mdi mdi-arrow-left-thick"></i>&nbsp;Back</a>
+                <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i>&nbsp;Submit</button>
               </form>
             </div>
           </div>

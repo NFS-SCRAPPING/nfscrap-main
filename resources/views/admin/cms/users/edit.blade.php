@@ -44,8 +44,8 @@
                     @endforeach
                   </select>
                 </div>
-                <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i>&nbsp;Submit</button>
                 <a class="btn btn-success" href="{{url('admin/users')}}"><i class="mdi mdi-arusers-left-thick"></i>&nbsp;Back</a>
+                <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i>&nbsp;Submit</button>
               </form>
             </div>
           </div>
