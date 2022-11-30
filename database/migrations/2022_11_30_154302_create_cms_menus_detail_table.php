@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCmsMenusTable extends Migration
+class CreateCmsMenusDetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateCmsMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms_menus', function (Blueprint $table) {
+        Schema::create('cms_menus_detail', function (Blueprint $table) {
             $table->id();
-            $table->integer('modules_id');
-            $table->integer('submenus_id')->nullable();
-            $table->string('icon')->nullable();
-            $table->string('name');
+            $table->integer('cms_menus_id');
             $table->string('url');
-            $table->string('folder');
             $table->string('view');
-            $table->string('sorter');
-            $table->string('is_active');
+            $table->string('folder');
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ class CreateCmsMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cms_menus');
+        Schema::dropIfExists('cms_menus_detail');
     }
 }
