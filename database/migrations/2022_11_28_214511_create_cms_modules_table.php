@@ -16,14 +16,14 @@ class CreateCmsModulesTable extends Migration
         Schema::create('cms_modules', function (Blueprint $table) {
             $table->id();
             $table->integer('cms_settings_id')->nullable();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('icon')->nullable();
-            $table->string('middleware');
-            $table->string('url');
-            $table->string('controller');
-            $table->string('model');
-            $table->string('table');
-            $table->string('is_active');
+            $table->string('middleware')->nullable();
+            $table->string('url')->nullable();
+            $table->string('controller')->nullable();
+            $table->string('model')->nullable();
+            $table->string('table')->nullable();
+            $table->string('is_active')->nullable();
             $table->string('folder_controller')->nullable();
             $table->string('folder_model')->nullable();
             $table->string('folder_file')->nullable();

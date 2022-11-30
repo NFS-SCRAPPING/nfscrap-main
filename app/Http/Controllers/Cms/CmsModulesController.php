@@ -39,7 +39,8 @@ class CmsModulesController extends Controller
     public function index()
     {
         $list['title']          = 'Module Generator';
-        $list['cms_modules']    = CmsModules::all();
+        $list['cms_modules']    = CmsModules::leftJoin('cms_settings','cms_modules.cms_settings_id','=','cms_settings.id')
+                                  ->select('cms_modules.*','cms_settings.name as cms_settings_name')->get();
 
         return view('admin.cms.module.index',$list);
     }

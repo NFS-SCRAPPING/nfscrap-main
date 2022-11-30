@@ -28,6 +28,7 @@
                             <th>folder_controller</th>
                             <th>folder_model</th>
                             <th>folder_file</th>
+                            <th>Settings ID</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -45,6 +46,7 @@
                             <td>{{$key->folder_controller}}</td>
                             <td>{{$key->folder_model}}</td>
                             <td>{{$key->folder_file}}</td>
+                            <td>{{$key->cms_settings_name}}</td>
                             <td>
                               <a href="{{url('admin/modules/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
                               <a href="{{url('admin/modules/edit/'.$key->id)}}" class="btn btn-sm btn-warning">edit</a>

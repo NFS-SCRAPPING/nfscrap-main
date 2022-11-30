@@ -21,6 +21,7 @@ class CmsModules extends Model
         'folder_controller',
         'folder_model',
         'folder_file',
+        'cms_settings_id',
     ];
 
     public static function insertData($request){
@@ -37,6 +38,7 @@ class CmsModules extends Model
             'folder_controller' => $request->folder_controller,
             'folder_model'      => $request->folder_model,
             'folder_file'       => $request->folder_file,
+            'cms_settings_id'   => $request->cms_settings_id,
         ]);
 
         return $save;

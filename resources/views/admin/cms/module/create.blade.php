@@ -120,10 +120,10 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Settings Optinoal</label>
                             <div class="col-sm-9">
-                                <select class="js-example-basic-single" style="width:100%">
+                                <select class="js-example-basic-single" name="cms_settings_id" style="width:100%">
                                 <option value="" selected> pilih settings optional</option>
                                 @foreach($cms_settings as $settings)
-                                <option value="{{$settings->id}}">{{$settings->name}}</option>
+                                    <option value="{{$settings->id}}">{{$settings->name}}</option>
                                 @endforeach
                             </select>
                             </div>
