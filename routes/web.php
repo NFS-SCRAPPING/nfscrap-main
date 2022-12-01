@@ -57,6 +57,7 @@ Route::middleware(['web'])->group(function () {
             Route::post('settings/action/{slug}/{id}','Cms\CmsSettingsController@action');
             Route::post('settings/submodule/{table}/{foreign_key}','Cms\CmsSettingsController@submodule');
 
+            Route::group(['middleware' => ['superadmin']], function () {
 
             Route::get('modules','Cms\CmsModulesController@index')->name('modules');
             Route::get('modules/create','Cms\CmsModulesController@create')->name('modules-create');
@@ -68,8 +69,15 @@ Route::middleware(['web'])->group(function () {
             Route::post('modules/action/{slug}/{id}','Cms\CmsModulesController@action');
             Route::post('modules/submodule/{table}/{foreign_key}','Cms\CmsModulesController@submodule');
 
-
-            Route::group(['middleware' => ['superadmin']], function () {
+            Route::get('menus','Cms\CmsMenusController@index')->name('menus');
+            Route::get('menus/create','Cms\CmsMenusController@create')->name('menus-create');
+            Route::get('menus/show/{id}','Cms\CmsMenusController@show')->name('menus-show');
+            Route::get('menus/edit/{id}','Cms\CmsMenusController@edit')->name('menus-edit');
+            Route::get('menus/destroy/{id}','Cms\CmsMenusController@destroy')->name('menus-destroy');
+            Route::post('menus/store','Cms\CmsMenusController@store')->name('menus-store');
+            Route::post('menus/update','Cms\CmsMenusController@update')->name('menus-update');
+            Route::post('menus/action/{slug}/{id}','Cms\CmsMenusController@action');
+            Route::post('menus/submodule/{table}/{foreign_key}','Cms\CmsMenusController@submodule');
 
             });
 

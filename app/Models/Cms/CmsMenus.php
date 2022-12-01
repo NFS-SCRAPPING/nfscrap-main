@@ -10,8 +10,8 @@ class CmsMenus extends Model
     use HasFactory;
     protected $table = 'cms_menus';
     protected $fillable = [
-        'modules_id',
-        'submenus_id',
+        'cms_modules_id',
+        'parent_id',
         'icon',
         'name',
         'url',

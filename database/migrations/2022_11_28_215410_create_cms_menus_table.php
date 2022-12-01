@@ -15,8 +15,8 @@ class CreateCmsMenusTable extends Migration
     {
         Schema::create('cms_menus', function (Blueprint $table) {
             $table->id();
-            $table->integer('modules_id');
-            $table->integer('submenus_id')->nullable();
+            $table->integer('cms_modules_id');
+            $table->integer('parent_id')->nullable();
             $table->string('icon')->nullable();
             $table->string('name');
             $table->string('url');

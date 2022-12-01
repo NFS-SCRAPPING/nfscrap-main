@@ -39,7 +39,12 @@ class CmsMenusController extends Controller
      */
     public function index()
     {
-        //
+        $list['title']          = 'Menu Management';
+        $list['cms_modules']    =  CmsModules::leftJoin('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
+                                  ->select('cms_menus.*','cms_modules.name as cms_modules_name')
+                                  ->get();
+
+        return view('admin.cms.module.index',$list);
     }
 
     /**

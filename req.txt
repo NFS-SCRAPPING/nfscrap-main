@@ -9,9 +9,6 @@ composer require ixudra/curl
 https://github.com/markrogoyski/math-php
 composer require laravel/socialite
 
-
-
-
 catatan
 semua menggunakan uuid
 
