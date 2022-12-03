@@ -157,4 +157,12 @@ class CmsMenusController extends Controller
     {
         //
     }
+
+    public function action($id)
+    {
+        $list['title']          = 'Menu Management';
+        $list['description']    =  'ini adalah submenu untuk membuat modul di bawah menu management';
+
+        return view('admin.cms.menu.subaction',$list);
+    }
 }

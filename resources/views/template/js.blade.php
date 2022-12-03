@@ -24,3 +24,9 @@
     <script src="{{url('assets/js/select2.js')}}"></script>
 
     <script src="{{url('assets/vendors/lightbox/fslightbox.js')}}"></script>
+
+    <script>
+        $(function() { 
+            $(".nav-item.menu-items.active").removeClass("active"); 
+        });
+    </script>
