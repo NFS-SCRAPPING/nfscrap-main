@@ -54,7 +54,11 @@ class CmsMenusController extends Controller
      */
     public function create()
     {
-        //
+        $data['title']          = 'Create Menus';
+        $data['subtitle']       = 'this is the management menu';
+        $data['cms_modules']    = CmsModules::all();
+        $data['cms_menus']      = CmsMenus::all();
+        return view('admin.cms.menu.create',$data);
     }
 
     /**
@@ -65,7 +69,24 @@ class CmsMenusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                => 'required|string',
+            'icon'                => 'required|string',
+            'cms_modules_id'      => 'required|string',
+            'url'                 => 'required|string',
+            'view'                => 'required|string',
+            'sorter'              => 'required|string',
+            'is_active'           => 'required|string',
+            'folder'              => 'required|string',
+        ]);
+
+        $save = CmsMenus::insertData($request);
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -87,7 +108,12 @@ class CmsMenusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title']          = 'Edit Menus';
+        $data['subtitle']       = 'this is the management menu';
+        $data['cms_modules']    = CmsModules::all();
+        $data['cms_menus']      = CmsMenus::all();
+        $data['row']            = CmsMenus::find($id);
+        return view('admin.cms.menu.edit',$data);
     }
 
     /**
@@ -97,9 +123,27 @@ class CmsMenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id'                  => 'required',
+            'name'                => 'required|string',
+            'icon'                => 'required|string',
+            'cms_modules_id'      => 'required|string',
+            'url'                 => 'required|string',
+            'view'                => 'required|string',
+            'sorter'              => 'required|string',
+            'is_active'           => 'required|string',
+            'folder'              => 'required|string',
+        ]);
+
+        $update = CmsMenus::updateData($request);
+
+        if($update){
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
+        }
     }
 
     /**

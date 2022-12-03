@@ -31,6 +31,10 @@ https://laravel-code.tips/threads/laravel-clean-code-tactics/
 
 https://github.com/asantibanez/laravel-blade-sortable
 
+JS PLUGIN
+
+https://fslightbox.com/javascript/download
+
 kita rubah personal_access_tokens agar bisa digunakan di users yg uuid defaultnya string
 
  Schema::create('personal_access_tokens', function (Blueprint $table) {

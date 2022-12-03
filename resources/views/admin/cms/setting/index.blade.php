@@ -32,7 +32,9 @@
                             <td>{{$key->description}}</td>
                             <td>
                                 @if($key->image)
+                                <a data-fslightbox="gallery" href="{{url('storage/'.$key->image)}}">
                                     <img src="{{url('storage/'.$key->image)}}" class="img-table" alt="{{$key->name}}">
+                                </a>
                                 @else
                                     <p>no image</p>
                                 @endif
