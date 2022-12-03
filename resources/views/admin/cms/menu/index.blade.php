@@ -19,6 +19,7 @@
                           <tr>
                             <th>name</th>
                             <th>icon</th>
+                            <th>parent_id</th>
                             <th>cms_modules</th>
                             <th>url</th>
                             <th>view</th>
@@ -34,6 +35,7 @@
                           <tr>
                             <td>{{$key->name}}</td>
                             <td><i class="mdi {{$key->icon}}"></i></td>
+                            <td>{{$key->parent_name}}</td>
                             <td>{{$key->cms_modules_name}}</td>
                             <td>{{$key->url}}</td>
                             <td>{{$key->view}}</td>

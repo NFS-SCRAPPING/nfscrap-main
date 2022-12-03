@@ -104,7 +104,7 @@
                             <label class="col-sm-3 col-form-label">Parent Menu</label>
                             <div class="col-sm-9">
                                 <select class="js-example-basic-single" name="parent_id" style="width:100%">
-                                <option value="" selected> Optional sub menus</option>
+                                <option value="{{$row->parent_id}}" selected>{{$row->parent_name}}</option>
                                 @foreach($cms_menus as $menus)
                                     <option value="{{$menus->id}}">{{$menus->name}}</option>
                                 @endforeach

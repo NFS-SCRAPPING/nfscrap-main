@@ -40,9 +40,7 @@ class CmsMenusController extends Controller
     public function index()
     {
         $list['title']          = 'Menu Management';
-        $list['cms_menus']    =  CmsMenus::leftJoin('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
-                                  ->select('cms_menus.*','cms_modules.name as cms_modules_name')
-                                  ->get();
+        $list['cms_menus']    =  CmsMenus::fetchAll();
 
         return view('admin.cms.menu.index',$list);
     }
@@ -97,7 +95,10 @@ class CmsMenusController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['title']          = 'Edit Menus';
+        $data['subtitle']       = 'this is the management menu';
+        $data['row']            = CmsMenus::fetchOne($id);
+        return view('admin.cms.menu.show',$data);
     }
 
     /**
@@ -112,7 +113,7 @@ class CmsMenusController extends Controller
         $data['subtitle']       = 'this is the management menu';
         $data['cms_modules']    = CmsModules::all();
         $data['cms_menus']      = CmsMenus::all();
-        $data['row']            = CmsMenus::find($id);
+        $data['row']            = CmsMenus::fetchOne($id);
         return view('admin.cms.menu.edit',$data);
     }
 

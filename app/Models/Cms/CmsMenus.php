@@ -21,6 +21,25 @@ class CmsMenus extends Model
         'sorter',
     ];
 
+    public static function fetchOne($id){
+        $data = CmsMenus::leftJoin('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
+                ->leftJoin('cms_menus as parent','cms_menus.parent_id','=','parent.id')
+                ->where('cms_menus.id',$id)
+                ->select('cms_menus.*','parent.name as parent_name','cms_modules.name as cms_modules_name')
+                ->first();
+
+        return $data;
+    }
+
+    public static function fetchAll(){
+        $data = CmsMenus::leftJoin('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
+                ->leftJoin('cms_menus as parent','cms_menus.parent_id','=','parent.id')
+                ->select('cms_menus.*','parent.name as parent_name','cms_modules.name as cms_modules_name')
+                ->get();
+
+        return $data;
+    }
+
     public static function insertData($request){
 
         $save = CmsMenus::create([
