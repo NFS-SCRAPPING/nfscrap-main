@@ -160,9 +160,10 @@ class CmsMenusController extends Controller
 
     public function action($id)
     {
-        $list['title']          = 'Menu Management';
-        $list['description']    =  'ini adalah submenu untuk membuat modul di bawah menu management';
+        $data['title']          = 'Menu Management';
+        $data['description']    =  'ini adalah submenu untuk membuat modul di bawah menu management';
+        $data['row']            = CmsMenus::fetchOne($id);
 
-        return view('admin.cms.menu.subaction',$list);
+        return view('admin.cms.menu.subaction',$data);
     }
 }
