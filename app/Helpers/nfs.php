@@ -14,7 +14,7 @@ use App\Models\Cms\CmsModules;
 class Nfs {
    
     public static function app(){
-        return "NFScrap";
+        return "NonScrap";
     }
 
     public static function Encrypt($value){
