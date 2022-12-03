@@ -47,7 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function save_data($request){
+    public static function save_data($request){
 
         $save = User::insert([
             "name"          =>$request->name,
