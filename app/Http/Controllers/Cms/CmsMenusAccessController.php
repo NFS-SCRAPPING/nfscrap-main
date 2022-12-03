@@ -4,9 +4,44 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+#PACKAGE
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
+use Ixudra\Curl\Facades\Curl;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
+use Validator;
+use Hash;
+#HELPER
+use Cron;
+use Date;
+use Fibonanci;
+use Helper;
+use Nfs;
+use Payments;
+use Wa;
+#MODEL
+use App\Models\User;
+use App\Models\Cms\Role;
+use App\Models\Cms\CmsSettings;
+use App\Models\Cms\CmsModules;
+use App\Models\Cms\CmsMenus;
+use App\Models\Cms\CmsMenusAccess;
 
 class CmsMenusAccessController extends Controller
 {
+
+    public function init(){
+        $data['users']          = User::fetch_one(Session::get('id'));
+        $data['cms_role_access']= false;
+        $data['table']          = 'cms_menu_access';
+        $data['title']          = 'Management Menu Access';
+        $data['detail']         = 'Ini adalah pengaturan untuk menu access setiap role';
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +49,9 @@ class CmsMenusAccessController extends Controller
      */
     public function index($cms_menus_id)
     {
-        //
+        $data['meta'] = Self::init();
+        
+        return view('admin.cms.menu_access.index',$data);
     }
 
     /**

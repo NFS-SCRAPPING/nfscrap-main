@@ -61,4 +61,13 @@ class User extends Authenticatable
 
         return $save;
     }
+
+    public static function fetch_one($id){
+        $data=User::join('cms_role','users.cms_role_id','=','cms_role.id')
+                ->where('users.id',$id)
+                ->select('users.*','cms_role.name as cms_role_name')
+                ->fisrt();
+
+        return $data;
+    }
 }
