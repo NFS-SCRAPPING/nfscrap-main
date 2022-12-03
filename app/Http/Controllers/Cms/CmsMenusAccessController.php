@@ -12,7 +12,7 @@ class CmsMenusAccessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($cms_menus_id)
     {
         //
     }
@@ -22,7 +22,7 @@ class CmsMenusAccessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($cms_menus_id)
     {
         //
     }
@@ -33,7 +33,7 @@ class CmsMenusAccessController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($cms_menus_id,Request $request)
     {
         //
     }
@@ -44,7 +44,7 @@ class CmsMenusAccessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cms_menus_id,$id)
     {
         //
     }
@@ -55,7 +55,7 @@ class CmsMenusAccessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($cms_menus_id,$id)
     {
         //
     }
@@ -67,7 +67,7 @@ class CmsMenusAccessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($cms_menus_id,Request $request)
     {
         //
     }
@@ -78,7 +78,7 @@ class CmsMenusAccessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cms_menus_id,$id)
     {
         //
     }

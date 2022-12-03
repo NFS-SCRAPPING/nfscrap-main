@@ -79,6 +79,13 @@ Route::middleware(['web'])->group(function () {
             Route::post('menus/action/{slug}/{id}','Cms\CmsMenusController@action');
             Route::post('menus/submodule/{table}/{foreign_key}','Cms\CmsMenusController@submodule');
 
+            Route::get('menu_access/{cms_menus_id}','Cms\CmsMenusAccessController@index');
+            Route::get('menu_access/create/{cms_menus_id}','Cms\CmsMenusAccessController@create');
+            Route::get('menu_access/show/{cms_menus_id}/{id}','Cms\CmsMenusAccessController@show');
+            Route::get('menu_access/edit/{cms_menus_id}/{id}','Cms\CmsMenusAccessController@edit');
+            Route::get('menu_access/destroy/{cms_menus_id}/{id}','Cms\CmsMenusAccessController@destroy');
+            Route::post('menu_access/store/{cms_menus_id}','Cms\CmsMenusAccessController@store');
+            Route::post('menu_access/update/{cms_menus_id}','Cms\CmsMenusAccessController@update');
             });
 
         });
@@ -91,7 +98,6 @@ Route::middleware(['web'])->group(function () {
         Route::get('login','Admin\GuestController@login')->name('login');
         Route::get('register','Admin\GuestController@register')->name('register');
         Route::get('forget','Admin\GuestController@forget')->name('forget');
-        Route::get('/','Admin\GuestController@welcome')->name('welcome');
 
         Route::get('test','TetsController@index');
     });
@@ -103,6 +109,8 @@ Route::middleware(['web'])->group(function () {
         Route::post('forget-password','AuthController@forget_password');
 
     });
+
+    Route::get('/','Admin\GuestController@welcome')->name('welcome');
 
 
 });

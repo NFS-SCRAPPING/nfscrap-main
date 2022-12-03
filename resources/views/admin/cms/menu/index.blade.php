@@ -43,7 +43,7 @@
                             <td>{{$key->is_active}}</td>
                             <td>{{$key->folder}}</td>
                             <td>
-                              <a href="{{url('admin/menus/show/'.$key->id)}}" class="btn btn-sm btn-primary">menu access</a>
+                              <a href="{{url('admin/menus/action/'.$key->id)}}" class="btn btn-sm btn-primary">menu setting</a>
                             </td>
                             <td>
                               <a href="{{url('admin/menus/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
