@@ -41,7 +41,7 @@ class CmsMenusAccessController extends Controller
         $data['cms_role_access']= false;
         $data['table']          = 'cms_menu_access';
         $data['title']          = 'Management Menu Access';
-        $data['description']         = 'Ini adalah pengaturan untuk menu access setiap role';
+        $data['description']    = 'Ini adalah pengaturan untuk menu access setiap role';
 
         return $data;
     }

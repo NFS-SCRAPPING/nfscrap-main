@@ -96,7 +96,8 @@ Route::middleware(['web'])->group(function () {
 
                     Route::get('menu_detail/{cms_menus_id}', [CmsMenusDetailController::class, 'index']);
                     Route::get('menu_detail/destroy/{id}', [CmsMenusDetailController::class, 'destroy']);
-                    Route::get('menu_detail/store', [CmsMenusDetailController::class, 'store']);
+                    Route::post('menu_detail/store', [CmsMenusDetailController::class, 'store']);
+                    Route::post('menu_detail/update', [CmsMenusDetailController::class, 'update']);
             });
 
         });

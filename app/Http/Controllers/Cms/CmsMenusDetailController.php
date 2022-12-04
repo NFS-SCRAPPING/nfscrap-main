@@ -76,7 +76,20 @@ class CmsMenusDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cms_menus_id'        => 'required',
+            'function'            => 'required|string',
+            'url'                 => 'required|string',
+            'view'                => 'required|string',
+        ]);
+
+        $save = CmsMenusDetail::insertData($request);
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -108,9 +121,23 @@ class CmsMenusDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'id'        => 'required',
+            'cms_menus_id'        => 'required',
+            'function'            => 'required|string',
+            'url'                 => 'required|string',
+            'view'                => 'required|string',
+        ]);
+
+        $update = CmsMenusDetail::updateData($request);
+
+        if($update){
+            return redirect()->back()->with('message','success update data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update data')->with('message_type','warning');
+        }
     }
 
     /**

@@ -36,7 +36,7 @@ class CmsMenusDetail extends Model
 
     public static function insertData($request){
 
-        $save = CmsMenus::create([
+        $save = CmsMenusDetail::create([
             'cms_menus_id'  => $request->cms_menus_id,
             'url'           => $request->url,
             'view'          => $request->view,
@@ -49,7 +49,7 @@ class CmsMenusDetail extends Model
 
     public static function updateData($request){
 
-        $update = CmsMenus::where('id',$request->id)->update([
+        $update = CmsMenusDetail::where('id',$request->id)->update([
             'cms_menus_id'  => $request->cms_menus_id,
             'url'           => $request->url,
             'view'          => $request->view,
