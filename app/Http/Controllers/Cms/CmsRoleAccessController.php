@@ -4,18 +4,52 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+#PACKAGE
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
+use Ixudra\Curl\Facades\Curl;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
+use Validator;
+use Hash;
+#HELPER
+use Cron;
+use Date;
+use Fibonanci;
+use Helper;
+use Nfs;
+use Payments;
+use Wa;
+#MODEL
+use App\Models\User;
+use App\Models\Cms\Role;
+use App\Models\Cms\CmsSettings;
+use App\Models\Cms\CmsModules;
+use App\Models\Cms\CmsMenus;
+use App\Models\Cms\CmsMenusAccess;
+use App\Models\Cms\CmsRoleAccess;
 
-class CmsRoleAccessDetailController extends Controller
+class CmsRoleAccessController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public static function init(){
+        $data['link']='cms_role';
+
+        return $data;
     }
+
+    public function index($role_id)
+    {
+        $data           = Self::init();
+        $data['title']  = 'Management Role Access';
+        $data['menu']   = CmsMenus::all();
+        $data['row']   = Role::find($role_id);
+
+        return view('admin.cms.role_access.index',$data);
+    }
+
 
     /**
      * Show the form for creating a new resource.

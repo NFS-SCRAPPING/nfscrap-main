@@ -27,7 +27,7 @@
                           <tr>
                             <td>{{$key->name}}</td>
                             <td>
-                              <a href="{{url('admin/role_access/action/'.$key->id)}}" class="btn btn-sm btn-success">Role Access</a>
+                              <a href="{{url('admin/role_access/'.$key->id)}}" class="btn btn-sm btn-success">Role Access</a>
                             </td>
                             <td>
                               <a href="{{url('admin/role/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>

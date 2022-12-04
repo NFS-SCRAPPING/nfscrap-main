@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="mb-20">
-    <a href="{{url('admin/menus')}}" class="btn btn-link btn-rounded btn-fw"><< back to {{$title}}</a>
+    <a href="{{url('admin/menus')}}" class="btn btn-link btn-rounded btn-fw"><i class="mdi mdi-arrow-left-bold-circle-outline">&nbsp;back to {{$title}}</i></a>
 </div>
 
 <div class="row">

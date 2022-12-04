@@ -13,6 +13,7 @@ use App\Http\Controllers\Cms\CmsMenusController;
 use App\Http\Controllers\Cms\CmsModulesController;
 use App\Http\Controllers\Cms\CmsSettingsController;
 use App\Http\Controllers\Cms\RoleController;
+use App\Http\Controllers\Cms\CmsRoleAccessController;
 use App\Http\Controllers\Cms\UsersController;
 use App\Http\Controllers\Cms\CmsMenusDetailController;
 
@@ -69,6 +70,8 @@ Route::middleware(['web'])->group(function () {
             Route::post('settings/store',[CmsSettingsController::class, 'store'])->name('settings-store');
             Route::post('settings/update',[CmsSettingsController::class, 'update'])->name('settings-update');
             Route::post('settings/action/{slug}/{id}',[CmsSettingsController::class, 'action']);
+
+            Route::get('role_access/{role_id}', [CmsRoleAccessController::class, 'index']);
 
             Route::group(['middleware' => ['superadmin']], function () {
 
