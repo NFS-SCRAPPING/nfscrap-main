@@ -14,21 +14,22 @@ use App\Models\Cms\CmsSettings;
 use App\Models\Cms\CmsModules;
 use App\Models\Cms\CmsMenus;
 use App\Models\Cms\CmsMenusAccess;
- 
+use App\Models\Cms\CmsLogs;
+
 class Nfs {
    
     public static function app(){
         return "NonScrap";
     }
 
-    public static function menu()
+    public static function menu($user_id)
     {
-        // $data = CmsMenus::leftJoin('cms_menus_access','cms_menus.id','=','cms_menus_access.cms_menus_id')
-        //         ->leftJoin('cms_role','cms_menus_access.cms_role_id','=','cms_role.id')
-        //         ->grupBy('cms_menus')
-        //         ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
-        //         ->get();
-        $data = CmsMenus::all();
+        $data = CmsMenus::leftJoin('cms_menus_access','cms_menus.id','=','cms_menus_access.cms_menus_id')
+                ->leftJoin('cms_role','cms_menus_access.cms_role_id','=','cms_role.id')
+                ->join('users','cms_role.id','=','users.cms_role_id')
+                ->where('users.id',$user_id)
+                ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
+                ->get();
         
         return $data;
     }

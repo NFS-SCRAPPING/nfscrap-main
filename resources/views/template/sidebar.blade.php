@@ -67,7 +67,7 @@
           </a>
         </li>
 
-        @foreach (Nfs::menu() as $menu_access)
+        @foreach (Nfs::menu(Session::get('id')) as $menu_access)
 
         <li class="nav-item menu-items @if($link==$menu_access->name) nav-active @endif">
           <a class="nav-link" href="{{url('admin/'.$menu_access->url)}}">
