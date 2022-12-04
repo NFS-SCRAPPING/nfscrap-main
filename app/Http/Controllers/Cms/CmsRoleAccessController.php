@@ -72,14 +72,9 @@ class CmsRoleAccessController extends Controller
         $request->validate([
             'cms_role_id'      => 'required',
             'cms_menus_id'     => 'required',
-            'is_view'          => '',
-            'is_detail'        => '',
-            'is_edit'          => '',
-            'is_create'        => '',
-            'is_delete'        => '',
         ]);
 
-        dd($request->all());
+        $save = CmsRoleAccess::insertData($request);
         
 
         if($save){
