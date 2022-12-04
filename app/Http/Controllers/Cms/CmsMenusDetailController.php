@@ -4,6 +4,33 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+#PACKAGE
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
+use Ixudra\Curl\Facades\Curl;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
+use Validator;
+use Hash;
+#HELPER
+use Cron;
+use Date;
+use Fibonanci;
+use Helper;
+use Nfs;
+use Payments;
+use Wa;
+#MODEL
+use App\Models\User;
+use App\Models\Cms\Role;
+use App\Models\Cms\CmsSettings;
+use App\Models\Cms\CmsModules;
+use App\Models\Cms\CmsMenus;
+use App\Models\Cms\CmsMenusAccess;
+use App\Models\Cms\CmsMenusDetail;
 
 class CmsMenusDetailController extends Controller
 {
@@ -12,9 +39,23 @@ class CmsMenusDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function init(){
+        $data['link']='cms_menus';
+        $data['table']          = 'cms_menu_detail';
+        $data['title']          = 'Management Menu Detail';
+        $data['description']    = 'Ini adalah pengaturan untuk menu detail setiap role';
+
+        return $data;
+    }
+
+    public function index($cms_menus_id)
     {
-        //
+        $data                   = Self::init();
+        $data['row']            = CmsMenus::fetchOne($cms_menus_id);
+        $data['cms_menus_detail'] = CmsMenusDetail::fetchAll($cms_menus_id);
+
+        
+        return view('admin.cms.menu_detail.index',$data);
     }
 
     /**

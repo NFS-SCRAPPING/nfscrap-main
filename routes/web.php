@@ -14,6 +14,7 @@ use App\Http\Controllers\Cms\CmsModulesController;
 use App\Http\Controllers\Cms\CmsSettingsController;
 use App\Http\Controllers\Cms\RoleController;
 use App\Http\Controllers\Cms\UsersController;
+use App\Http\Controllers\Cms\CmsMenusDetailController;
 
 
 /*
@@ -90,12 +91,12 @@ Route::middleware(['web'])->group(function () {
                     Route::get('menus/action/{id}',[CmsMenusController::class, 'action']);
 
                     Route::get('menu_access/{cms_menus_id}',[CmsMenusAccessController::class, 'index']);
-                    Route::get('menu_access/create/{cms_menus_id}',[CmsMenusAccessController::class, 'create']);
-                    Route::get('menu_access/show/{cms_menus_id}/{id}',[CmsMenusAccessController::class, 'show']);
-                    Route::get('menu_access/edit/{cms_menus_id}/{id}',[CmsMenusAccessController::class, 'edit']);
                     Route::get('menu_access/destroy/{id}',[CmsMenusAccessController::class, 'destroy']);
                     Route::post('menu_access/store',[CmsMenusAccessController::class, 'store']);
-                    Route::post('menu_access/update/{cms_menus_id}',[CmsMenusAccessController::class, 'update']);
+
+                    Route::get('menu_detail/{cms_menus_id}', [CmsMenusDetailController::class, 'index']);
+                    Route::get('menu_detail/destroy/{id}', [CmsMenusDetailController::class, 'destroy']);
+                    Route::get('menu_detail/store', [CmsMenusDetailController::class, 'store']);
             });
 
         });
