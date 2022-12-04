@@ -33,6 +33,7 @@ class DashboardController extends Controller
 
         return $data;
     }
+    
     public function index(){
         $data = Self::init();
         return view('admin.dashboard.dashboard',$data);
