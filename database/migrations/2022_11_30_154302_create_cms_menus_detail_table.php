@@ -18,7 +18,7 @@ class CreateCmsMenusDetailTable extends Migration
             $table->integer('cms_menus_id');
             $table->string('url');
             $table->string('view');
-            $table->string('folder');
+            $table->string('function');
             $table->timestamps();
         });
     }
