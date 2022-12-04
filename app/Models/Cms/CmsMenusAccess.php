@@ -15,4 +15,15 @@ class CmsMenusAccess extends Model
     ];
 
 
+    public static function fetchAll($cms_menus_id){
+        $data = CmsMenusAccess::join('cms_role','cms_menus_access.cms_role_id','=','cms_role.id')
+                ->join('cms_menus','cms_menus_access.cms_menus_id','=','cms_menus.id')
+                ->where('cms_menus.id',$cms_menus_id)
+                ->select('cms_menus_access.*','cms_role.name as cms_role_name','cms_menus.name as cms_menus_name')
+                ->get();
+
+        return $data;
+    }
+
+
 }

@@ -94,7 +94,7 @@ Route::middleware(['web'])->group(function () {
                     Route::get('menu_access/show/{cms_menus_id}/{id}',[CmsMenusAccessController::class, 'show']);
                     Route::get('menu_access/edit/{cms_menus_id}/{id}',[CmsMenusAccessController::class, 'edit']);
                     Route::get('menu_access/destroy/{cms_menus_id}/{id}',[CmsMenusAccessController::class, 'destroy']);
-                    Route::post('menu_access/store/{cms_menus_id}',[CmsMenusAccessController::class, 'store']);
+                    Route::post('menu_access/store',[CmsMenusAccessController::class, 'store']);
                     Route::post('menu_access/update/{cms_menus_id}',[CmsMenusAccessController::class, 'update']);
             });
 

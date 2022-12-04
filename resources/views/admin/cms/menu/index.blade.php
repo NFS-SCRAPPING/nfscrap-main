@@ -17,13 +17,13 @@
                       <table class="table table-hover">
                         <thead>
                           <tr>
+                            <th>sorter</th>
                             <th>name</th>
                             <th>icon</th>
                             <th>parent_id</th>
                             <th>cms_modules</th>
                             <th>url</th>
                             <th>view</th>
-                            <th>sorter</th>
                             <th>is_active</th>
                             <th>folder</th>
                             <th>MenuAccess</th>
@@ -33,13 +33,13 @@
                         <tbody>
                           @foreach($cms_menus as $key)
                           <tr>
+                            <td>{{$key->sorter}}</td>
                             <td>{{$key->name}}</td>
                             <td><i class="mdi {{$key->icon}}"></i></td>
                             <td>{{$key->parent_name}}</td>
                             <td>{{$key->cms_modules_name}}</td>
                             <td>{{$key->url}}</td>
                             <td>{{$key->view}}</td>
-                            <td>{{$key->sorter}}</td>
                             <td>{{$key->is_active}}</td>
                             <td>{{$key->folder}}</td>
                             <td>

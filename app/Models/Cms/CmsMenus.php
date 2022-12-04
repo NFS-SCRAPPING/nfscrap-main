@@ -35,6 +35,7 @@ class CmsMenus extends Model
         $data = CmsMenus::leftJoin('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
                 ->leftJoin('cms_menus as parent','cms_menus.parent_id','=','parent.id')
                 ->select('cms_menus.*','parent.name as parent_name','cms_modules.name as cms_modules_name')
+                ->orderBy('cms_menus.sorter','asc')
                 ->get();
 
         return $data;

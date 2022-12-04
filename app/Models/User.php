@@ -66,7 +66,7 @@ class User extends Authenticatable
         $data=User::join('cms_role','users.cms_role_id','=','cms_role.id')
                 ->where('users.id',$id)
                 ->select('users.*','cms_role.name as cms_role_name')
-                ->fisrt();
+                ->first();
 
         return $data;
     }

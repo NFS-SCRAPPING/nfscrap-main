@@ -281,3 +281,11 @@
     width: 80px;
     border-radius: 50px;
 }
+.white{
+    color: white;
+}
+
+.head-white{
+    color: white;
+    font-weight: 700px;
+}

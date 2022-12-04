@@ -34,13 +34,15 @@ use App\Models\Cms\CmsMenusAccess;
 class CmsMenusAccessController extends Controller
 {
 
-    public function init(){
+    public static function init(){
+        $data['cms_role']       = Role::all();
         $data['users']          = User::fetch_one(Session::get('id'));
         $data['cms_role_access']= false;
         $data['table']          = 'cms_menu_access';
         $data['title']          = 'Management Menu Access';
-        $data['detail']         = 'Ini adalah pengaturan untuk menu access setiap role';
+        $data['description']         = 'Ini adalah pengaturan untuk menu access setiap role';
 
+        return $data;
     }
     /**
      * Display a listing of the resource.
@@ -49,7 +51,10 @@ class CmsMenusAccessController extends Controller
      */
     public function index($cms_menus_id)
     {
-        $data['meta'] = Self::init();
+        $data                   = Self::init();
+        $data['row']            = CmsMenus::fetchOne($cms_menus_id);
+        $data['cms_menus_access'] = CmsMenusAccess::fetchAll($cms_menus_id);
+
         
         return view('admin.cms.menu_access.index',$data);
     }
@@ -70,9 +75,25 @@ class CmsMenusAccessController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($cms_menus_id,Request $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cms_role_id'      => 'required',
+            'cms_menus_id'     => 'required',
+        ]);
+
+        $save = CmsMenusAccess::create(
+            [
+                'cms_role_id'   => $request->cms_role_id,
+                'cms_menus_id'  => $request->cms_menus_id,
+            ]
+        );
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**
@@ -81,7 +102,7 @@ class CmsMenusAccessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($cms_menus_id,$id)
+    public function show($id)
     {
         //
     }

@@ -36,12 +36,14 @@
       <div class="card">
         <div class="card-body">
             <div class="template-demo">
-              <a href="" class="btn btn-primary btn-rounded btn-fw">Menus Access</a>
+              <a href="{{url('admin/menu_access/'.$row->id)}}" class="btn btn-primary btn-rounded btn-fw">Menus Access</a>
               <a href="" class="btn btn-secondary btn-rounded btn-fw">Blade View</a>
             </div>
         </div>
       </div>
     </div>
   </div>
+
+@yield('menus_action')
 
 @endsection
