@@ -33,21 +33,28 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function init(){
+        $data['link']='users';
+
+        return $data;
+    }
+
     public function index()
-    {
-        $list['title'] = 'Management Users';
+    {   
+        $data                   = Self::init();
+        $data['title'] = 'Management Users';
         
         if(Session::get('cms_role_id')==1){
-            $list['data'] = User::join('cms_role','users.cms_role_id','=','cms_role.id')
+            $data['data'] = User::join('cms_role','users.cms_role_id','=','cms_role.id')
                             ->select('users.*','cms_role.name as cms_role_name')->get();
         }else{
-            $list['data'] = User::join('cms_role','users.cms_role_id','=','cms_role.id')
+            $data['data'] = User::join('cms_role','users.cms_role_id','=','cms_role.id')
                             ->where('users.cms_role_id','!=',1)
                             ->select('users.*','cms_role.name as cms_role_name')
                             ->get();
         }
         
-        return view('admin.cms.users.index',$list);
+        return view('admin.cms.users.index',$data);
     }
 
     /**
@@ -57,6 +64,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $data                   = Self::init();
         $data['title']   = 'Create Users';
         $data['subtitle']= 'this is the management users menu';
         $data['cms_role']= Role::where('id','!=',1)->get();
@@ -107,6 +115,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        $data                   = Self::init();
         $data['title']   = 'Detail Users';
         $data['subtitle']= 'this is the management users menu';
 
@@ -130,6 +139,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        $data                   = Self::init();
         $data['title']   = 'Edit Users';
         $data['subtitle']= 'this is the management users menu';
 

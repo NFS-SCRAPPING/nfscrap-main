@@ -58,7 +58,7 @@
       </li>
 
       @auth
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items @if($link=='dashboard') nav-active @endif">
           <a class="nav-link" href="{{url('dashboard')}}">
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
@@ -74,7 +74,7 @@
         <span class="nav-link">Panel Admin</span>
       </li>
 
-      <li class="nav-item menu-items">
+      <li class="nav-item menu-items @if($link=='cms_role') nav-active @endif">
         <a class="nav-link" href="{{url('admin/role')}}">
           <span class="menu-icon">
             <i class="mdi mdi-key"></i>
@@ -83,7 +83,7 @@
         </a>
       </li>
 
-      <li class="nav-item menu-items">
+      <li class="nav-item menu-items @if($link=='users') nav-active @endif">
         <a class="nav-link" href="{{url('admin/users')}}">
           <span class="menu-icon">
             <i class="mdi mdi-account-multiple"></i>
@@ -92,7 +92,7 @@
         </a>
       </li>
 
-      <li class="nav-item menu-items">
+      <li class="nav-item menu-items @if($link=='cms_settings') nav-active @endif">
         <a class="nav-link" href="{{url('admin/settings')}}">
           <span class="menu-icon">
             <i class="mdi mdi-widgets"></i>
@@ -101,7 +101,7 @@
         </a>
       </li>
 
-      <li class="nav-item menu-items">
+      <li class="nav-item menu-items @if($link=='cms_logs') nav-active @endif">
         <a class="nav-link" href="{{url('admin/logs')}}">
           <span class="menu-icon">
             <i class="mdi mdi-flag-outline"></i>
@@ -119,7 +119,7 @@
           <span class="nav-link">Panel Superadmin</span>
         </li>
 
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items @if($link=='cms_menus') nav-active @endif">
           <a class="nav-link" href="{{url('admin/menus')}}">
             <span class="menu-icon">
               <i class="mdi mdi-format-list-bulleted-type"></i>
@@ -128,7 +128,7 @@
           </a>
         </li>
 
-        <li class="nav-item menu-items">
+        <li class="nav-item menu-items @if($link=='cms_modules') nav-active @endif">
           <a class="nav-link" href="{{url('admin/modules')}}">
             <span class="menu-icon">
               <i class="mdi mdi-code-not-equal-variant"></i>

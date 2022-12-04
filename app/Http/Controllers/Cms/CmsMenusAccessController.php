@@ -35,6 +35,7 @@ class CmsMenusAccessController extends Controller
 {
 
     public static function init(){
+        $data['link']           ='cms_menus';
         $data['cms_role']       = Role::all();
         $data['users']          = User::fetch_one(Session::get('id'));
         $data['cms_role_access']= false;

@@ -37,12 +37,19 @@ class CmsMenusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function init(){
+        $data['link']='cms_menus';
+
+        return $data;
+    }
+
     public function index()
     {
-        $list['title']          = 'Menu Management';
-        $list['cms_menus']    =  CmsMenus::fetchAll();
+        $data                   = Self::init();
+        $data['title']          = 'Menu Management';
+        $data['cms_menus']      =  CmsMenus::fetchAll();
 
-        return view('admin.cms.menu.index',$list);
+        return view('admin.cms.menu.index',$data);
     }
 
     /**
@@ -52,6 +59,7 @@ class CmsMenusController extends Controller
      */
     public function create()
     {
+        $data                   = Self::init();
         $data['title']          = 'Create Menus';
         $data['subtitle']       = 'this is the management menu';
         $data['cms_modules']    = CmsModules::all();
@@ -95,6 +103,7 @@ class CmsMenusController extends Controller
      */
     public function show($id)
     {
+        $data                   = Self::init();
         $data['title']          = 'Edit Menus';
         $data['subtitle']       = 'this is the management menu';
         $data['row']            = CmsMenus::fetchOne($id);
@@ -109,6 +118,7 @@ class CmsMenusController extends Controller
      */
     public function edit($id)
     {
+        $data                   = Self::init();
         $data['title']          = 'Edit Menus';
         $data['subtitle']       = 'this is the management menu';
         $data['cms_modules']    = CmsModules::all();
@@ -160,6 +170,7 @@ class CmsMenusController extends Controller
 
     public function action($id)
     {
+        $data                   = Self::init();
         $data['title']          = 'Menu Management';
         $data['description']    =  'ini adalah submenu untuk membuat modul di bawah menu management';
         $data['row']            = CmsMenus::fetchOne($id);

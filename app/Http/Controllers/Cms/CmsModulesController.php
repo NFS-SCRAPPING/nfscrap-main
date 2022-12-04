@@ -36,13 +36,20 @@ class CmsModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function init(){
+        $data['link']='cms_modules';
+
+        return $data;
+    }
+
     public function index()
     {
-        $list['title']          = 'Module Generator';
-        $list['cms_modules']    = CmsModules::leftJoin('cms_settings','cms_modules.cms_settings_id','=','cms_settings.id')
+        $data                   = Self::init();
+        $data['title']          = 'Module Generator';
+        $data['cms_modules']    = CmsModules::leftJoin('cms_settings','cms_modules.cms_settings_id','=','cms_settings.id')
                                   ->select('cms_modules.*','cms_settings.name as cms_settings_name')->get();
 
-        return view('admin.cms.module.index',$list);
+        return view('admin.cms.module.index',$data);
     }
 
     /**
@@ -52,6 +59,7 @@ class CmsModulesController extends Controller
      */
     public function create()
     {
+        $data                   = Self::init();
         $data['title']          = 'Create Modules';
         $data['subtitle']       = 'this is the management modules generator';
         $data['cms_settings']   = CmsSettings::all();
@@ -97,6 +105,7 @@ class CmsModulesController extends Controller
      */
     public function show($id)
     {
+        $data                   = Self::init();
         $data['title']          = 'Detail Modules';
         $data['subtitle']       = 'this is the management modules generator';
         $data['row']            = CmsModules::fetchOne($id);
@@ -112,6 +121,7 @@ class CmsModulesController extends Controller
      */
     public function edit($id)
     {
+        $data                   = Self::init();
         $data['title']          = 'Edit Modules';
         $data['subtitle']       = 'this is the management modules generator';
         $data['cms_settings']   = CmsSettings::all();

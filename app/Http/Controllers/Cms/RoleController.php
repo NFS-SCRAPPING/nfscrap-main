@@ -34,17 +34,24 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function init(){
+        $data['link']='cms_role';
+
+        return $data;
+    }
+
     public function index()
     {
-        $list['title'] = 'Management Role';
+        $data                   = Self::init();
+        $data['title'] = 'Management Role';
         
         if(Session::get('cms_role_id')==1){
-            $list['data'] = Role::all();
+            $data['data'] = Role::all();
         }else{
-            $list['data'] = Role::where('id','!=',1)->get();
+            $data['data'] = Role::where('id','!=',1)->get();
         }
         
-        return view('admin.cms.role.index',$list);
+        return view('admin.cms.role.index',$data);
     }
 
     /**
@@ -54,6 +61,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $data                   = Self::init();
         $data['title']   = 'Create Role';
         $data['subtitle']= 'this is the management roles menu';
         return view('admin.cms.role.create',$data);
@@ -88,6 +96,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+        $data                   = Self::init();
         $data['title']   = 'Detail Role';
         $data['subtitle']= 'this is the management roles menu';
         $data['row']     = Role::where('id',$id)->first();
@@ -102,6 +111,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        $data                   = Self::init();
         $data['title']   = 'Edit Role';
         $data['subtitle']= 'this is the management roles menu';
         $data['row']     = Role::where('id',$id)->first();

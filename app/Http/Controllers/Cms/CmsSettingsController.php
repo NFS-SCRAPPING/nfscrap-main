@@ -35,11 +35,18 @@ class CmsSettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function init(){
+        $data['link']='cms_settings';
+
+        return $data;
+    }
+
     public function index()
     {
-        $list['title']          = 'Managemet Settings';
-        $list['cms_settings']   = CmsSettings::paginate(20);
-        return view('admin.cms.setting.index',$list);
+        $data                   = Self::init();
+        $data['title']          = 'Managemet Settings';
+        $data['cms_settings']   = CmsSettings::paginate(20);
+        return view('admin.cms.setting.index',$data);
     }
 
     /**
@@ -49,6 +56,7 @@ class CmsSettingsController extends Controller
      */
     public function create()
     {
+        $data                   = Self::init();
         $data['title']   = 'Create Settings';
         $data['subtitle']= 'this is the management settings menu';
         return view('admin.cms.setting.create',$data);
@@ -84,6 +92,7 @@ class CmsSettingsController extends Controller
      */
     public function show($id)
     {
+        $data                   = Self::init();
         $data['title']   = 'Detail Settings';
         $data['subtitle']= 'this is the management settings menu';
         $data['row']     = CmsSettings::find($id);
@@ -98,6 +107,7 @@ class CmsSettingsController extends Controller
      */
     public function edit($id)
     {
+        $data                   = Self::init();
         $data['title']   = 'Edit Settings';
         $data['subtitle']= 'this is the management settings menu';
         $data['row']     = CmsSettings::find($id);

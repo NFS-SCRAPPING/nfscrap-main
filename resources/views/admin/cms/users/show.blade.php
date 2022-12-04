@@ -39,7 +39,7 @@
               </div>
 
               <div class="mt-10">
-                <a class="btn btn-success" href="{{url('admin/role')}}"><i class="mdi mdi-arrow-left-thick"></i>&nbsp;Back</a>
+                <a class="btn btn-success" href="{{url('admin/users')}}"><i class="mdi mdi-arrow-left-thick"></i>&nbsp;Back</a>
               </div>
 
             </div>

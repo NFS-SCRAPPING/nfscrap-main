@@ -28,7 +28,13 @@ use App\Models\Cms\Role;
 
 class DashboardController extends Controller
 {
+    public static function init(){
+        $data['link']='dashboard';
+
+        return $data;
+    }
     public function index(){
-        return view('admin.dashboard.dashboard');
+        $data = Self::init();
+        return view('admin.dashboard.dashboard',$data);
     }
 }
