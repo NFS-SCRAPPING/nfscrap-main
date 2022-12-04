@@ -154,15 +154,6 @@
         <li class="nav-item menu-items">
           <a class="nav-link" href="index.html">
             <span class="menu-icon">
-              <i class="mdi mdi-source-merge"></i>
-            </span>
-            <span class="menu-title">API Generator</span>
-          </a>
-        </li>
-
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="index.html">
-            <span class="menu-icon">
               <i class="mdi mdi-email"></i>
             </span>
             <span class="menu-title">Email Templates</span>

@@ -69,7 +69,24 @@ class CmsRoleAccessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cms_role_id'      => 'required',
+            'cms_menus_id'     => 'required',
+            'is_view'          => '',
+            'is_detail'        => '',
+            'is_edit'          => '',
+            'is_create'        => '',
+            'is_delete'        => '',
+        ]);
+
+        dd($request->all());
+        
+
+        if($save){
+            return redirect()->back()->with('message','success save data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed save data')->with('message_type','warning');
+        }
     }
 
     /**

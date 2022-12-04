@@ -15,6 +15,7 @@ class CreateCmsRoleAccessTable extends Migration
     {
         Schema::create('cms_role_access', function (Blueprint $table) {
             $table->id();
+            $table->integer('cms_role_id');
             $table->integer('cms_menus_id');
             $table->boolean('is_view');
             $table->boolean('is_create');

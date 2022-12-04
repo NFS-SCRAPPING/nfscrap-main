@@ -72,6 +72,7 @@ Route::middleware(['web'])->group(function () {
             Route::post('settings/action/{slug}/{id}',[CmsSettingsController::class, 'action']);
 
             Route::get('role_access/{role_id}', [CmsRoleAccessController::class, 'index']);
+            Route::post('role_access/store', [CmsRoleAccessController::class, 'store']);
 
             Route::group(['middleware' => ['superadmin']], function () {
 
