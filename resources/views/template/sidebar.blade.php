@@ -66,6 +66,20 @@
             <span class="menu-title">Dashboard</span>
           </a>
         </li>
+
+        @foreach (Nfs::menu() as $menu_access)
+
+        <li class="nav-item menu-items @if($link==$menu_access->name) nav-active @endif">
+          <a class="nav-link" href="{{url('admin/'.$menu_access->url)}}">
+            <span class="menu-icon">
+              <i class="mdi {{$menu_access->icon}}"></i>
+            </span>
+            <span class="menu-title">{{$menu_access->name}}</span>
+          </a>
+        </li>
+            
+        @endforeach
+
       @endauth
 
       @if(Session::get('cms_role_id') ==1 or Session::get('cms_role_id') ==2 )

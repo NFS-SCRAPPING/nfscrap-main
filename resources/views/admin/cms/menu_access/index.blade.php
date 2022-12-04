@@ -17,6 +17,7 @@
                     <tr>
                       <th class="head-white">role</th>
                       <th class="head-white">menu</th>
+                      <th class="head-white">action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -24,6 +25,9 @@
                     <tr>
                         <td>{{$key->cms_role_name}}</td>
                         <td>{{$key->cms_menus_name}}</td>
+                        <td>
+                          <a href="{{url('admin/menu_access/destroy/'.$key->id)}}" class="btn btn-sm btn-danger">delete</a>
+                        </td>
                     </tr>
                     @endforeach
                   </tbody>

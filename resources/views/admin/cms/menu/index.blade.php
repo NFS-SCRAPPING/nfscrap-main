@@ -20,13 +20,13 @@
                             <th>sorter</th>
                             <th>name</th>
                             <th>icon</th>
-                            <th>parent_id</th>
-                            <th>cms_modules</th>
+                            <th>parent menu</th>
+                            <th>cms modules</th>
                             <th>url</th>
                             <th>view</th>
-                            <th>is_active</th>
-                            <th>folder</th>
-                            <th>MenuAccess</th>
+                            <th>is active</th>
+                            <th>folder view</th>
+                            <th>Menu Access</th>
                             <th>Action</th>
                           </tr>
                         </thead>

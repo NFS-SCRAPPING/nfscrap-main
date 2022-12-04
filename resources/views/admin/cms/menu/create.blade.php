@@ -32,7 +32,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('folder')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('folder view')}}</label>
                         <div class="col-sm-9">
                           <input type="text" name="folder" class="form-control" required>
                         </div>

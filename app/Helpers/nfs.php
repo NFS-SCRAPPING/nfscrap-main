@@ -8,13 +8,35 @@ use Image;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Cms\CmsLogs;
+use App\Models\User;
+use App\Models\Cms\Role;
+use App\Models\Cms\CmsSettings;
 use App\Models\Cms\CmsModules;
+use App\Models\Cms\CmsMenus;
+use App\Models\Cms\CmsMenusAccess;
  
 class Nfs {
    
     public static function app(){
         return "NonScrap";
+    }
+
+    public static function menu()
+    {
+        // $data = CmsMenus::leftJoin('cms_menus_access','cms_menus.id','=','cms_menus_access.cms_menus_id')
+        //         ->leftJoin('cms_role','cms_menus_access.cms_role_id','=','cms_role.id')
+        //         ->grupBy('cms_menus')
+        //         ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
+        //         ->get();
+        $data = CmsMenus::all();
+        
+        return $data;
+    }
+
+    public static function role(){
+        $data = Role::all();
+
+        return $data;
     }
 
     public static function Encrypt($value){

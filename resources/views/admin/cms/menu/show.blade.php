@@ -21,12 +21,12 @@
                         <td>{{$row->name}}</td>
                     </tr>
                     <tr>
-                        <td>cms_modules_name</td>
+                        <td>cms modules name</td>
                         <td>:</td>
                         <td>{{$row->cms_modules_name}}</td>
                     </tr>
                     <tr>
-                        <td>parent_name</td>
+                        <td>parent name</td>
                         <td>:</td>
                         <td>{{$row->parent_name}}</td>
                     </tr>
@@ -41,7 +41,7 @@
                         <td>{{$row->url}}</td>
                     </tr>
                     <tr>
-                        <td>folder</td>
+                        <td>folder view</td>
                         <td>:</td>
                         <td>{{$row->folder}}</td>
                     </tr>

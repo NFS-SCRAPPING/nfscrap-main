@@ -29,6 +29,7 @@ use App\Models\Cms\Role;
 use App\Models\Cms\CmsSettings;
 use App\Models\Cms\CmsModules;
 use App\Models\Cms\CmsMenus;
+use App\Models\Cms\CmsMenusAccess;
 
 class CmsMenusController extends Controller
 {
@@ -165,7 +166,15 @@ class CmsMenusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = CmsMenus::where('id',$id)->delete();
+        
+        CmsMenusAccess::where('cms_menus_id',$id)->delete();
+        
+        if($delete){
+            return redirect()->back()->with('message','success delete data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed delete data')->with('message_type','warning');
+        }
     }
 
     public function action($id)

@@ -137,8 +137,14 @@ class CmsMenusAccessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($cms_menus_id,$id)
+    public function destroy($id)
     {
-        //
+        $delete = CmsMenusAccess::where('id',$id)->delete();
+        
+        if($delete){
+            return redirect()->back()->with('message','success delete data')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed delete data')->with('message_type','warning');
+        }
     }
 }
