@@ -80,7 +80,7 @@ class CmsMenusDetailController extends Controller
             'cms_menus_id'        => 'required',
             'function'            => 'required|string',
             'url'                 => 'required|string',
-            'view'                => 'required|string',
+            'method'              => 'required|string',
         ]);
 
         $save = CmsMenusDetail::insertData($request);
@@ -124,11 +124,11 @@ class CmsMenusDetailController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'id'        => 'required',
+            'id'                  => 'required',
             'cms_menus_id'        => 'required',
             'function'            => 'required|string',
             'url'                 => 'required|string',
-            'view'                => 'required|string',
+            'method'              => 'required|string',
         ]);
 
         $update = CmsMenusDetail::updateData($request);

@@ -7,6 +7,6 @@ use Nfs;
 class TetsController extends Controller
 {
     public function index(){
-        dd(Nfs::createView());
+        dd(Nfs::controller());
     }
 }

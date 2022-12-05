@@ -70,7 +70,7 @@
         @foreach (Nfs::menu(Session::get('id')) as $menu_access)
 
         <li class="nav-item menu-items @if($link==$menu_access->name) nav-active @endif">
-          <a class="nav-link" href="{{url('admin/'.$menu_access->url)}}">
+          <a class="nav-link" href="{{url($menu_access->url.'/'.Nfs::Encrypt($menu_access->id))}}">
             <span class="menu-icon">
               <i class="mdi {{$menu_access->icon}}"></i>
             </span>

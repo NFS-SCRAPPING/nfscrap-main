@@ -17,7 +17,6 @@ use App\Http\Controllers\Cms\CmsRoleAccessController;
 use App\Http\Controllers\Cms\UsersController;
 use App\Http\Controllers\Cms\CmsMenusDetailController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +34,8 @@ Route::middleware(['web'])->group(function () {
     Route::group(['middleware' => ['auth']], function () {
 
         Route::get('dashboard',[DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('test',[TetsController::class, 'index']);
 
         Route::post('logout',[AuthController::class, 'logout']);
 
@@ -114,8 +115,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('login',[GuestController::class, 'login'])->name('login');
         Route::get('register',[GuestController::class, 'register'])->name('register');
         Route::get('forget',[GuestController::class, 'forget'])->name('forget');
-        
-        Route::get('test',[TetsController::class, 'index']);
+
     });
 
     Route::group(['middleware' => ['guest','throttle:6,1']], function () {

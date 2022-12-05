@@ -19,8 +19,53 @@ use App\Models\Cms\CmsRoleAccess;
 
 class Nfs {
    
+    //default nama app
     public static function app(){
         return "NonScrap";
+    }
+
+    //default route admin
+    public static function admin_path(){
+        
+        return "admin";
+    }
+
+    //default route superadmin
+    public static function superadmin_path(){
+        
+        return "superadmin";
+    }
+
+    public static function route(){
+        $data = CmsMenus::join('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
+                ->join('cms_menus_detail','cms_menus.id','=','cms_menus_detail.cms_menus_id')
+                ->select('cms_modules.*','cms_menus_detail.url as route_url',
+                        'cms_menus_detail.function as route_function','cms_menus_detail.method as route_method',
+                        )
+                ->get();
+        
+        //module management 
+        $text = [];
+        foreach($data as $key){
+           $route  = explode("(", $key->route_function);
+           $url['url']='Route::'.$key->route_method.'('.$key->url.',['.$key->controller.'::class,'.$route[0].']);';
+           array_push($text,$url);
+        }
+
+        return $text;
+        
+    }
+
+    public static function controller(){
+        $data = CmsModules::all();
+        $text = [];
+        foreach($data as $key){
+            $list['class'] = "use \App\Http\Controller\\".$key->folder_controller.'\\'.$key->controller;
+
+            array_push($text,$list);
+        }
+
+        return $text;
     }
 
     public static function menu($user_id)
@@ -35,6 +80,8 @@ class Nfs {
         return $data;
     }
 
+
+    //buat function di view role access
     public static function roleAccess($cms_role_id,$cms_menus_id){
         $data = CmsRoleAccess::where('cms_role_id',$cms_role_id)
                 ->where('cms_menus_id',$cms_menus_id)

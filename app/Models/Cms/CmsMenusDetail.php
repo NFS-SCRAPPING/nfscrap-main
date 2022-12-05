@@ -14,6 +14,7 @@ class CmsMenusDetail extends Model
         'url',
         'view',
         'function',
+        'method',
     ];
 
     public static function fetchOne($id){
@@ -41,6 +42,7 @@ class CmsMenusDetail extends Model
             'url'           => $request->url,
             'view'          => $request->view,
             'function'      => $request->function,
+            'method'      => $request->method,
         ]);
 
         return $save;
@@ -54,6 +56,7 @@ class CmsMenusDetail extends Model
             'url'           => $request->url,
             'view'          => $request->view,
             'function'      => $request->function,
+            'method'      => $request->method,
         ]);
 
         return $update;

@@ -16,6 +16,7 @@
                   <thead>
                     <tr>
                       <th class="head-white">menu</th>
+                      <th class="head-white">method</th>
                       <th class="head-white">url</th>
                       <th class="head-white">view</th>
                       <th class="head-white">function</th>
@@ -26,6 +27,7 @@
                     @foreach($cms_menus_detail as $key)
                     <tr>
                         <td>{{$key->cms_menus_name}}</td>
+                        <td>{{$key->method}}</td>
                         <td>{{$key->url}}</td>
                         <td>{{$key->view}}</td>
                         <td>{{$key->function}}</td>
@@ -59,6 +61,11 @@
                                         <div class="form-group">
                                             <label for="view">view</label>
                                             <input type="text" class="form-control" value="{{$key->view}}" name="view" id="view" placeholder="view">
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="method">method</label>
+                                          <input type="text" class="form-control" name="method" value="{{$key->method}}" id="method" placeholder="method">
                                         </div>
 
                                         <div class="form-group">
@@ -107,6 +114,11 @@
                   <div class="form-group">
                     <label for="view">view</label>
                     <input type="text" class="form-control" name="view" id="view" placeholder="view">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="method">method</label>
+                    <input type="text" class="form-control" name="method" id="method" placeholder="method">
                   </div>
 
                   <div class="form-group">
