@@ -15,6 +15,7 @@ use App\Models\Cms\CmsModules;
 use App\Models\Cms\CmsMenus;
 use App\Models\Cms\CmsMenusAccess;
 use App\Models\Cms\CmsLogs;
+use App\Models\Cms\CmsRoleAccess;
 
 class Nfs {
    
@@ -31,6 +32,14 @@ class Nfs {
                 ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
                 ->get();
         
+        return $data;
+    }
+
+    public static function roleAccess($cms_role_id,$cms_menus_id){
+        $data = CmsRoleAccess::where('cms_role_id',$cms_role_id)
+                ->where('cms_menus_id',$cms_menus_id)
+                ->first();
+
         return $data;
     }
 

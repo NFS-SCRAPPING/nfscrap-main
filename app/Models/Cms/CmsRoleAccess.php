@@ -25,45 +25,24 @@ class CmsRoleAccess extends Model
         $record = $request->all();
         $data   = [];
 
+        CmsRoleAccess::where('cms_role_id',$record['cms_role_id'])->delete();
 
-        foreach($record as $val => $key ){
-            dd($key);
-            $list['cms_role_id'] = $key->cms_role_id;
-            $list['cms_menus_id']= $key->cms_menus_id;
-
-            if($key->is_view){
-                $list['is_view'] = true;
-            }else{
-                $list['is_view'] = false;
-            }
-
-            if($key->is_create){
-                $list['is_create'] = true;
-            }else{
-                $list['is_create'] = false;
-            }
-
-            if($key->is_edit){
-                $list['is_edit'] = true;
-            }else{
-                $list['is_edit'] = false;
-            }
-
-            if($key->is_detail){
-                $list['is_detail'] = true;
-            }else{
-                $list['is_detail'] = false;
-            }
-
-            if($key->is_delete){
-                $list['is_delete'] = true;
-            }else{
-                $list['is_delete'] = false;
-            }
+        for($i=0;$i<count($record['cms_menus_id']); $i++){
+            $list['cms_role_id']    = $record['cms_role_id'];
+            $list['cms_menus_id']   = $record['cms_menus_id'][$i];
+            $list['is_view']        = $record['is_view'][$i];
+            $list['is_create']      = $record['is_create'][$i];
+            $list['is_edit']        = $record['is_edit'][$i];
+            $list['is_detail']      = $record['is_detail'][$i];
+            $list['is_delete']      = $record['is_delete'][$i];
 
             array_push($data,$list);
+
         }
 
-        dd($data);
+        $save = CmsRoleAccess::insert($data);
+
+        return $save;
+
     }
 }

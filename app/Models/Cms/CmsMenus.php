@@ -41,6 +41,7 @@ class CmsMenus extends Model
         return $data;
     }
 
+
     public static function insertData($request){
 
         $save = CmsMenus::create([

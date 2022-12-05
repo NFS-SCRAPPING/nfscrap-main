@@ -15,13 +15,13 @@ class CreateCmsRoleAccessTable extends Migration
     {
         Schema::create('cms_role_access', function (Blueprint $table) {
             $table->id();
-            $table->integer('cms_role_id');
-            $table->integer('cms_menus_id');
-            $table->boolean('is_view');
-            $table->boolean('is_create');
-            $table->boolean('is_edit');
-            $table->boolean('is_delete');
-            $table->boolean('is_detail');
+            $table->integer('cms_role_id')->nullable();
+            $table->integer('cms_menus_id')->nullable();
+            $table->string('is_view')->nullable();
+            $table->string('is_create')->nullable();
+            $table->string('is_edit')->nullable();
+            $table->string('is_delete')->nullable();
+            $table->string('is_detail')->nullable();
             $table->timestamps();
         });
     }
