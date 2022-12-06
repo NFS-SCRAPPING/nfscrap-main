@@ -1,4 +1,4 @@
-@extends('template.content')
-@section('content')
+@extends("template.content")
+            @section("content")
 
-@endsection
+            @endsection

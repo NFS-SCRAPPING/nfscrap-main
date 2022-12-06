@@ -284,7 +284,7 @@ class Nfs {
 
     public static function createFolderMainView($main){
         //NAME FOLDER DI Models
-        $folder = resource_path($main.'/');
+        $folder = resource_path('views/admin/'.$main.'/');
 
         if(!File::isDirectory($folder)){
             File::makeDirectory($folder, 0777, true, true);
@@ -295,7 +295,7 @@ class Nfs {
 
     public static function createFolderSubView($main,$sub){
         //NAME FOLDER DI Models
-        $folder = resource_path($main.'/'.$sub.'/');
+        $folder = resource_path('views/admin/'.$main.'/'.$sub.'/');
 
         if(!File::isDirectory($folder)){
             File::makeDirectory($folder, 0777, true, true);
@@ -608,6 +608,32 @@ class Nfs {
         $path = base_path("app/Models/".$folder_model."/");
         file_put_contents($path.$model.'.php', $php);
 
+        return true;
+    }
+
+    public static function createView($cms_menu_id){
+        $menu_detail  = CmsMenus::join('cms_menus_detail','cms_menus.id','=','cms_menus_detail.cms_menus_id')
+                        ->where('cms_menus_detail.cms_menus_id',$cms_menu_id)
+                        ->select('cms_menus.*','cms_menus_detail.view')
+                        ->get();
+        $menu  = CmsMenus::where('id',$cms_menu_id)->first();
+
+               Self::createFolderMainView($menu->main_folder);
+       $path = Self::createFolderSubView($menu->main_folder,$menu->sub_folder);
+
+        $php = "\n".'
+            @extends("template.content")
+            @section("content")
+
+            @endsection
+        ';
+
+        $php = trim($php);
+        foreach($menu_detail as $key){
+            if($key->view){
+                file_put_contents($path.$key->view, $php);
+            }
+        }
         return true;
     }
 

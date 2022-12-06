@@ -196,6 +196,7 @@ class CmsModulesController extends Controller
         if($check){
             Nfs::createController($id,$check->id);
             Nfs::createModels($id,$check->id);
+            Nfs::createView($check->id);
 
             return redirect()->back()->with('message','success generate modules '.$check->name)->with('message_type','primary');
         }else{
