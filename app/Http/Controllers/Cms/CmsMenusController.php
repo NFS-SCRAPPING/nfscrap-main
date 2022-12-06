@@ -77,12 +77,12 @@ class CmsMenusController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'                => 'required|string',
+            'name'                => 'required|string|unique:cms_menus,name',
             'icon'                => 'required|string',
             'cms_modules_id'      => 'required|string',
             'url'                 => 'required|string',
             'sub_folder'          => 'required|string',
-            'sorter'              => 'required|string',
+            'sorter'              => 'required|integer|unique:cms_menus,sorter',
             'status'              => 'required|string',
             'main_folder'         => 'required|string',
         ]);
@@ -166,9 +166,7 @@ class CmsMenusController extends Controller
      */
     public function destroy($id)
     {
-        $delete = CmsMenus::where('id',$id)->delete();
-        
-        CmsMenusAccess::where('cms_menus_id',$id)->delete();
+        $delete = Nfs::deleteAllMenusRelasi($id);
         
         if($delete){
             return redirect()->back()->with('message','success delete data')->with('message_type','primary');

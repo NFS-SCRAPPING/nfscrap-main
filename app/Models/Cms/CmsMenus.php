@@ -4,6 +4,7 @@ namespace App\Models\Cms;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Nfs;
 
 class CmsMenus extends Model
 {
@@ -56,6 +57,10 @@ class CmsMenus extends Model
             'sorter'         => $request->sorter,
         ]);
 
+        //melakukan insert default di access menu
+        $id = $save->id;
+        Nfs::createDeafultValue($id);
+
         return $save;
 
     }
@@ -73,6 +78,10 @@ class CmsMenus extends Model
             'status'            => $request->status,
             'sorter'            => $request->sorter,
         ]);
+
+        $delete = Nfs::deleteAllMenusRelasi($request->id);
+
+        $update = Nfs::createDeafultValue($request->id);
 
         return $update;
 

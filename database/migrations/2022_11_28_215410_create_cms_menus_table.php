@@ -18,11 +18,11 @@ class CreateCmsMenusTable extends Migration
             $table->integer('cms_modules_id');
             $table->integer('parent_id')->nullable();
             $table->string('icon')->nullable();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('url');
             $table->string('main_folder');
             $table->string('sub_folder');
-            $table->string('sorter');
+            $table->integer('sorter')->unique();
             $table->string('status');
             $table->timestamps();
         });

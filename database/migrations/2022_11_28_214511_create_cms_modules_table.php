@@ -16,11 +16,11 @@ class CreateCmsModulesTable extends Migration
         Schema::create('cms_modules', function (Blueprint $table) {
             $table->id();
             $table->integer('cms_settings_id')->nullable();
-            $table->string('name')->nullable();
+            $table->string('name')->unique();
             $table->string('icon')->nullable();
             $table->string('middleware')->nullable();
-            $table->string('controller')->nullable();
-            $table->string('model')->nullable();
+            $table->string('controller')->unique();
+            $table->string('model')->unique();
             $table->string('table')->nullable();
             $table->string('status')->nullable();
             $table->string('folder_controller')->nullable();
@@ -30,7 +30,7 @@ class CreateCmsModulesTable extends Migration
         });
     }
 
-    /**
+    /**->unique()
      * Reverse the migrations.
      *
      * @return void

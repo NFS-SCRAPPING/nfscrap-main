@@ -28,6 +28,7 @@ use App\Models\User;
 use App\Models\Cms\Role;
 use App\Models\Cms\CmsSettings;
 use App\Models\Cms\CmsModules;
+use App\Models\Cms\CmsMenus;
 
 class CmsModulesController extends Controller
 {
@@ -75,16 +76,16 @@ class CmsModulesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'                => 'required|string',
+            'name'                => 'required|string|unique:cms_modules,name',
             'icon'                => 'required|string',
             'middleware'          => 'required|string',
-            'controller'          => 'required|string',
-            'model'               => 'required|string',
+            'controller'          => 'required|string|unique:cms_modules,controller',
+            'model'               => 'required|string|unique:cms_modules,model',
             'table'               => 'required|string',
-            'status'           => 'required|string',
+            'status'              => 'required|string',
             'folder_controller'   => 'required|string',
             'folder_model'        => 'required|string',
-            'folder_storage'         => 'required|string',
+            'folder_storage'      => 'required|string',
         ]);
 
         $save = CmsModules::insertData($request);
@@ -169,8 +170,18 @@ class CmsModulesController extends Controller
      */
     public function destroy($id)
     {   
+        //INI AKAN MENDELETE MENU, MENU ACCESS, MENU DETAIL DAN ROLE ACCESS
+
+        $check = CmsMenus::where('cms_modules_id',$id)->first();
+
+        if($check){
+            Nfs::deleteAllMenusRelasi($check->id);
+        }
+
+        //delete modules
         $delete = CmsModules::where('id',$id)->delete();
-        
+
+
         if($delete){
             return redirect()->back()->with('message','success delete data')->with('message_type','primary');
         }else{
