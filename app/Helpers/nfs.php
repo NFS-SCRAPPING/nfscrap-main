@@ -304,6 +304,53 @@ class Nfs {
         return $folder;
     }
 
+    public static function deleteFolderOnlyMenus($cms_menu_id){
+        $menu  = CmsMenus::where('id',$cms_menu_id)->first();
+
+        // Check and delete view
+        $blade_view = resource_path('views/admin/'.$menu->main_folder.'/'.$menu->sub_folder.'/');
+
+        if(File::isDirectory($blade_view)){
+            File::deleteDirectory($blade_view);
+        }
+
+        return true;
+    }
+
+    public static function deleteFolderAllGenerator($id,$cms_menu_id){
+        $fetch = CmsModules::where('id',$id)->first();
+        $menu  = CmsMenus::where('id',$cms_menu_id)->first();
+
+        // Check and delete view
+        $blade_view = resource_path('views/admin/'.$menu->main_folder.'/'.$menu->sub_folder.'/');
+
+        if(File::isDirectory($blade_view)){
+            File::deleteDirectory($blade_view);
+        }
+
+        // delete storage folder
+        $storage = storage_path('app/public/'.$fetch->file_storage);
+
+        if(File::isDirectory($storage)){
+            File::deleteDirectory($storage);
+        }
+
+        //delete file controller
+        $controller = app_path('Http/Controllers/'.$fetch->file_controller.'/'.$fetch->controller.'.php');
+        if(File::exists(app_path($controller ))){
+            File::delete(app_path($controller ));
+        }
+
+        //delete file model
+        $model = app_path('Models/'.$fetch->file_model.'/'.$fetch->model.'.php');
+        if(File::exists(app_path($model ))){
+            File::delete(app_path($model ));
+        }
+
+        return false;
+
+    }
+
     //========================= FUNCTION MEMBUAT FOLDER =============================
 
     //GET SCHEMAA TABEL
@@ -315,6 +362,8 @@ class Nfs {
 
         }
 
+
+    // ======================= FUNCTION CREATE CONTROLLER , MODEL DAN VIEW ===============
 
     public static function createController($id,$cms_menu_id){
 

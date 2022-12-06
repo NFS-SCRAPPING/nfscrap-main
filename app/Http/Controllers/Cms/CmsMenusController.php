@@ -165,7 +165,10 @@ class CmsMenusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+        $delete_folder_view = Nfs::deleteFolderOnlyMenus($id);
+
+        //delete semua relasi menus
         $delete = Nfs::deleteAllMenusRelasi($id);
         
         if($delete){
