@@ -35,7 +35,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">{{Helper::uc('main folder view')}}</label>
                         <div class="col-sm-9">
-                          <input type="text" name="folder" value="{{$row->folder}}" class="form-control" required>
+                          <input type="text" name="main_folder" value="{{$row->main_folder}}" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -53,7 +53,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">{{Helper::uc('sub folder view')}}</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="{{$row->view}}" name="view" required>
+                          <input type="text" class="form-control" value="{{$row->sub_folder}}" name="sub_folder" required>
                         </div>
                       </div>
                     </div>
@@ -71,10 +71,10 @@
 
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">{{Helper::uc('is active')}}</label>
+                          <label class="col-sm-3 col-form-label">{{Helper::uc('status')}}</label>
                           <div class="col-sm-9">
-                            <select class="form-control" name="is_active" required>
-                              <option value="{{$row->is_active}}" selected>{{$row->is_active}}</option>
+                            <select class="form-control" name="status" required>
+                              <option value="{{$row->status}}" selected>{{$row->status}}</option>
                               <option>active</option>
                               <option>notactive</option>
                             </select>

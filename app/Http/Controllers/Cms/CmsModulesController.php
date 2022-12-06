@@ -78,14 +78,13 @@ class CmsModulesController extends Controller
             'name'                => 'required|string',
             'icon'                => 'required|string',
             'middleware'          => 'required|string',
-            'url'                 => 'required|string',
             'controller'          => 'required|string',
             'model'               => 'required|string',
             'table'               => 'required|string',
-            'is_active'           => 'required|string',
+            'status'           => 'required|string',
             'folder_controller'   => 'required|string',
             'folder_model'        => 'required|string',
-            'folder_file'         => 'required|string',
+            'folder_storage'         => 'required|string',
         ]);
 
         $save = CmsModules::insertData($request);
@@ -144,14 +143,13 @@ class CmsModulesController extends Controller
             'name'                => 'required|string',
             'icon'                => 'required|string',
             'middleware'          => 'required|string',
-            'url'                 => 'required|string',
             'controller'          => 'required|string',
             'model'               => 'required|string',
             'table'               => 'required|string',
-            'is_active'           => 'required|string',
+            'status'              => 'required|string',
             'folder_controller'   => 'required|string',
             'folder_model'        => 'required|string',
-            'folder_file'         => 'required|string',
+            'folder_storage'      => 'required|string',
         ]);
 
         $update = CmsModules::updateData($request);

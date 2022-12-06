@@ -18,7 +18,7 @@
               <p class="mb-0 font-weight-normal d-none d-sm-block">{{$description}}</p>
               <ul>
                 <li>{{$row->name}} <small>(name)</small></li>
-                <li>{{$row->folder}} <small>(folder)</small></li>
+                <li>{{$row->main_folder}} <small>(folder)</small></li>
                 <li>{{$row->cms_modules_name}} <small>(module)</small></li>
                 <li>{{$row->parent_name}} <small>(submenu)</small></li>
                 <li>{{$row->is_active}} <small>(status)</small></li>

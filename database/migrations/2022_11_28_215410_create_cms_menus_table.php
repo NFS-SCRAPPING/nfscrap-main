@@ -20,10 +20,10 @@ class CreateCmsMenusTable extends Migration
             $table->string('icon')->nullable();
             $table->string('name');
             $table->string('url');
-            $table->string('folder');
-            $table->string('view');
+            $table->string('main_folder');
+            $table->string('sub_folder');
             $table->string('sorter');
-            $table->string('is_active');
+            $table->string('status');
             $table->timestamps();
         });
     }

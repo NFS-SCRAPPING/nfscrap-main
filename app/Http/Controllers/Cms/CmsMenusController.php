@@ -81,10 +81,10 @@ class CmsMenusController extends Controller
             'icon'                => 'required|string',
             'cms_modules_id'      => 'required|string',
             'url'                 => 'required|string',
-            'view'                => 'required|string',
+            'sub_folder'          => 'required|string',
             'sorter'              => 'required|string',
-            'is_active'           => 'required|string',
-            'folder'              => 'required|string',
+            'status'              => 'required|string',
+            'main_folder'         => 'required|string',
         ]);
 
         $save = CmsMenus::insertData($request);
@@ -143,10 +143,10 @@ class CmsMenusController extends Controller
             'icon'                => 'required|string',
             'cms_modules_id'      => 'required|string',
             'url'                 => 'required|string',
-            'view'                => 'required|string',
+            'sub_folder'          => 'required|string',
             'sorter'              => 'required|string',
-            'is_active'           => 'required|string',
-            'folder'              => 'required|string',
+            'status'              => 'required|string',
+            'main_folder'         => 'required|string',
         ]);
 
         $update = CmsMenus::updateData($request);

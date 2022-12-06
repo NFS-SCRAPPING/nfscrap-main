@@ -98,7 +98,7 @@
         <div class="card-body">
           <h4 class="card-title">Copy Paste To web.php</h4>
             <p>LIST CLASS</p>
-            @foreach(Nfs::controller() as $class)
+            @foreach(Nfs::controller($row->id) as $class)
 
                 <p style="color: red">{{$class['class']}}</p>
             
@@ -106,7 +106,7 @@
             <br>
 
             <p>LIST ROUTE</p>
-            @foreach(Nfs::route() as $route)
+            @foreach(Nfs::route($row->id) as $route)
 
                 <p style="color: aqua">{{$route['url']}}</p>
 

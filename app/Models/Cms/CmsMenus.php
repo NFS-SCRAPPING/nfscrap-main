@@ -15,9 +15,9 @@ class CmsMenus extends Model
         'icon',
         'name',
         'url',
-        'folder',
-        'view',
-        'is_active',
+        'main_folder',
+        'sub_folder',
+        'status',
         'sorter',
     ];
 
@@ -50,9 +50,9 @@ class CmsMenus extends Model
             'icon'           => $request->icon,
             'name'           => $request->name,
             'url'            => $request->url,
-            'folder'         => $request->folder,
-            'view'           => $request->view,
-            'is_active'      => $request->is_active,
+            'main_folder'    => $request->main_folder,
+            'sub_folder'     => $request->sub_folder,
+            'status'         => $request->status,
             'sorter'         => $request->sorter,
         ]);
 
@@ -68,10 +68,9 @@ class CmsMenus extends Model
             'cms_modules_id'    => $request->cms_modules_id,
             'parent_id'         => $request->parent_id,
             'url'               => $request->url,
-            'folder'            => $request->folder,
-            'view'              => $request->view,
-            'is_active'         => $request->is_active,
-            'is_active'         => $request->is_active,
+            'main_folder'       => $request->main_folder,
+            'sub_folder'        => $request->sub_folder,
+            'status'            => $request->status,
             'sorter'            => $request->sorter,
         ]);
 

@@ -36,9 +36,10 @@ class Nfs {
         return "superadmin";
     }
 
-    public static function route(){
+    public static function route($cms_menus_id){
         $data = CmsMenus::join('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
                 ->join('cms_menus_detail','cms_menus.id','=','cms_menus_detail.cms_menus_id')
+                ->where('cms_menus.id',$cms_menus_id)
                 ->select('cms_modules.*','cms_menus_detail.url as route_url',
                         'cms_menus_detail.function as route_function','cms_menus_detail.method as route_method',
                         )
@@ -56,8 +57,12 @@ class Nfs {
         
     }
 
-    public static function controller(){
-        $data = CmsModules::all();
+    public static function controller($cms_menus_id){
+        $data = CmsModules::join('cms_menus','cms_modules.id','=','cms_menus.cms_modules_id')
+                ->where('cms_menus.id',$cms_menus_id)
+                ->select('cms_modules.*')
+                ->get();
+                
         $text = [];
         foreach($data as $key){
             $list['class'] = "use App\Http\Controllers\\".$key->folder_controller.'\\'.$key->controller.';';

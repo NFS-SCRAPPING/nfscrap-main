@@ -19,14 +19,13 @@ class CreateCmsModulesTable extends Migration
             $table->string('name')->nullable();
             $table->string('icon')->nullable();
             $table->string('middleware')->nullable();
-            $table->string('url')->nullable();
             $table->string('controller')->nullable();
             $table->string('model')->nullable();
             $table->string('table')->nullable();
-            $table->string('is_active')->nullable();
+            $table->string('status')->nullable();
             $table->string('folder_controller')->nullable();
             $table->string('folder_model')->nullable();
-            $table->string('folder_file')->nullable();
+            $table->string('folder_storage')->nullable();
             $table->timestamps();
         });
     }

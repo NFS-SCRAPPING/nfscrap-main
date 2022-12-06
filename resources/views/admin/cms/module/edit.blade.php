@@ -40,14 +40,6 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('url')}}</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="url" value="{{$row->url}}" class="form-control" required>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6">
@@ -78,10 +70,10 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('is active')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('status')}}</label>
                         <div class="col-sm-9">
-                          <select class="form-control" name="is_active" required>
-                            <option value="{{$row->is_active}}" selected>{{$row->is_active}}</option>
+                          <select class="form-control" name="status" required>
+                            <option value="{{$row->is_active}}" selected>{{$row->status}}</option>
                             <option>active</option>
                             <option>notactive</option>
                           </select>
@@ -112,9 +104,9 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('folder file')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('folder storage')}}</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" value="{{$row->folder_file}}" name="folder_file" required>
+                          <input type="text" class="form-control" value="{{$row->folder_storage}}" name="folder_storage" required>
                         </div>
                       </div>
                     </div>

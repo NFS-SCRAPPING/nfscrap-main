@@ -26,11 +26,6 @@
                         <td>{{$row->middleware}}</td>
                     </tr>
                     <tr>
-                        <td>url</td>
-                        <td>:</td>
-                        <td>{{$row->url}}</td>
-                    </tr>
-                    <tr>
                         <td>controller</td>
                         <td>:</td>
                         <td>{{$row->controller}}</td>
@@ -46,27 +41,27 @@
                         <td>{{$row->table}}</td>
                     </tr>
                     <tr>
-                        <td>is_active</td>
+                        <td>status</td>
                         <td>:</td>
-                        <td>{{$row->is_active}}</td>
+                        <td>{{$row->status}}</td>
                     </tr>
                     <tr>
-                        <td>folder_controller</td>
+                        <td>folder controller</td>
                         <td>:</td>
                         <td>{{$row->folder_controller}}</td>
                     </tr>
                     <tr>
-                        <td>folder_model</td>
+                        <td>folder model</td>
                         <td>:</td>
                         <td>{{$row->folder_model}}</td>
                     </tr>
                     <tr>
-                        <td>folder_file</td>
+                        <td>folder storage</td>
                         <td>:</td>
-                        <td>{{$row->folder_file}}</td>
+                        <td>{{$row->folder_storage}}</td>
                     </tr>
                     <tr>
-                        <td>cms_settings</td>
+                        <td>cms settings</td>
                         <td>:</td>
                         <td>{{$row->cms_settings_name}}</td>
                     </tr>

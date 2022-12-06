@@ -25,7 +25,7 @@
                             <th>url / link</th>
                             <th>main folder view</th>
                             <th>sub folder view</th>
-                            <th>is active</th>
+                            <th>status</th>
                             <th>Menu Access</th>
                             <th>Action</th>
                           </tr>
@@ -39,9 +39,9 @@
                             <td><i class="mdi {{$key->icon}}"></i></td>
                             <td>{{$key->cms_modules_name}}</td>
                             <td>{{$key->url}}</td>
-                            <td>{{$key->folder}}</td>
-                            <td>{{$key->view}}</td>
-                            <td>{{$key->is_active}}</td>
+                            <td>{{$key->main_folder}}</td>
+                            <td>{{$key->sub_folder}}</td>
+                            <td>{{$key->status}}</td>
                             <td>
                               <a href="{{url('admin/menus/action/'.$key->id)}}" class="btn btn-sm btn-primary">menu setting</a>
                             </td>

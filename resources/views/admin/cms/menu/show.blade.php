@@ -43,17 +43,17 @@
                     <tr>
                         <td>main folder view</td>
                         <td>:</td>
-                        <td>{{$row->folder}}</td>
+                        <td>{{$row->main_folder}}</td>
                     </tr>
                     <tr>
                         <td>sub folder view</td>
                         <td>:</td>
-                        <td>{{$row->view}}</td>
+                        <td>{{$row->sub_folder}}</td>
                     </tr>
                     <tr>
-                        <td>is active</td>
+                        <td>status</td>
                         <td>:</td>
-                        <td>{{$row->is_active}}</td>
+                        <td>{{$row->status}}</td>
                     </tr>
                 </table>
               </div>

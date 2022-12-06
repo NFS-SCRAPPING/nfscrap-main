@@ -20,11 +20,10 @@
                             <th>name</th>
                             <th>icon</th>
                             <th>middleware</th>
-                            <th>url</th>
                             <th>controller</th>
                             <th>model</th>
                             <th>table</th>
-                            <th>is_active</th>
+                            <th>status</th>
                             <th>folder controller</th>
                             <th>folder storage</th>
                             <th>folder model</th>
@@ -38,13 +37,12 @@
                             <td>{{$key->name}}</td>
                             <td><i class="mdi {{$key->icon}}"></i></td>
                             <td>{{$key->middleware}}</td>
-                            <td>{{$key->url}}</td>
                             <td>{{$key->controller}}</td>
                             <td>{{$key->model}}</td>
                             <td>{{$key->table}}</td>
-                            <td>{{$key->is_active}}</td>
+                            <td>{{$key->status}}</td>
                             <td>{{$key->folder_controller}}</td>
-                            <td>{{$key->folder_file}}</td>
+                            <td>{{$key->folder_storage}}</td>
                             <td>{{$key->folder_model}}</td>
                             <td>{{$key->cms_settings_name}}</td>
                             <td>
