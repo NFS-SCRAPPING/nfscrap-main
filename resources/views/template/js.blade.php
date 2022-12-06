@@ -2,7 +2,7 @@
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{url('assets/vendors/chart.js')}}"></script>
-    <script src="{{url('assets/vendors/progressbar.js')}}/progressbar.min.js')}}"></script>
+    <script src="{{url('assets/vendors/progressbar.js')}}"></script>
     <script src="{{url('assets/vendors/jvectormap/jquery-jvectormap.min.js')}}"></script>
     <script src="{{url('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
     <script src="{{url('assets/vendors/owl-carousel-2/owl.carousel.min.js')}}"></script>

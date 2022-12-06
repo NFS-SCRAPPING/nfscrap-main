@@ -30,7 +30,30 @@ use App\Http\Controllers\Microservice\LinkedinController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['web'])->group(function () {
 
+    Route::group(['middleware' => ['auth']], function () {
+        //URL AUTO GENERATE
+
+        Route::get("linkedin/{menu_detail}",[LinkedinController::class,"index"]);
+
+        Route::get("linkedin/create/{menu_detail}",[LinkedinController::class,"create"]);
+
+        Route::get("linkedin/edit/{menu_detail}/{id}",[LinkedinController::class,"edit"]);
+
+        Route::get("linkedin/show/{menu_detail}/{id}",[LinkedinController::class,"show"]);
+
+        Route::post("linkedin/store",[LinkedinController::class,"store"]);
+
+        Route::post("linkedin/update",[LinkedinController::class,"update"]);
+
+        Route::get("linkedin/destroy/{menu_detail}/{id}",[LinkedinController::class,"destroy"]);
+    });
+
+});
+
+
+//ROUTE UNTUK ADMIN DAN SUPER ADMIN DEFAULT
 
 Route::middleware(['web'])->group(function () {
 
@@ -40,18 +63,7 @@ Route::middleware(['web'])->group(function () {
 
         Route::get('test',[TetsController::class, 'index']);
 
-        Route::post('logout',[AuthController::class, 'logout']);
-
-        //URL AUTO GENERATE
-
-        Route::get("linkedin/{menu_id}",[LinkedinController::class,"index"]);
-        Route::get("linkedin/create/{menu_id}",[LinkedinController::class,"create"]);
-        Route::get("linkedin/edit/{menu_id}",[LinkedinController::class,"edit"]);
-        Route::get("linkedin/show/{menu_id}",[LinkedinController::class,"show"]);
-        Route::get("linkedin/destroy/{id}",[LinkedinController::class,"destroy"]);
-        Route::post("linkedin/store",[LinkedinController::class,"store"]);
-        Route::post("linkedin/update",[LinkedinController::class,"update"]);
-   
+        Route::post('logout',[AuthController::class, 'logout']);   
 
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 

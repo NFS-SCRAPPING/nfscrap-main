@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Http;
 use Image;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\User;
 use App\Models\Cms\Role;
@@ -144,7 +146,7 @@ class Nfs {
 
     //MEMBUAT DEFAULT MENU ACCESS, ROLE ACCESS , MENU DETAIL SAAT MEMBUAT MENU
 
-    public static function createDeafultValue($cms_meus_id){
+    public static function createDeafultValue($cms_menus_id){
         //MENGAMBIL INFO MENU DETAIL
         $fetch = CmsMenus::where('id',$cms_menus_id)->first();
         
@@ -165,7 +167,7 @@ class Nfs {
         CmsRoleAccess::insert($role_access);
 
         //MEMBUAT MENU ACCESS
-        CmsMenusAccess::create([
+        DB::table('cms_menus_access')->insert([
             [
                 "cms_menus_id" => $cms_menus_id,
                 "cms_role_id"  => 1,
@@ -177,7 +179,7 @@ class Nfs {
         ]);
 
         //MEMBUAT MENU DETAIL
-        $return = CmsMenusDetail::create([
+        $return = DB::table('cms_menus_detail')->insert([
             [
                 "cms_menus_id"=>$cms_menus_id,
                 "url"         =>$fetch->url.'/{menu_detail}',
@@ -233,22 +235,60 @@ class Nfs {
 
     }
 
+    //========================= FUNCTION MEMBUAT FOLDER =============================
+
+    public static function createFolderController($name){
+        //NAME FOLDER DI CONTROLLERS
+        $folder = app_path('Http/Controllers/'.$name);
+
+        if(!File::isDirectory($folder)){
+            File::makeDirectory($folder, 0777, true, true);
+        }
+
+        return $folder;
+
+    }
+
+    public static function createFolderModels($name){
+        //NAME FOLDER DI Models
+        $folder = app_path('Models/'.$name);
+
+        if(!File::isDirectory($folder)){
+            File::makeDirectory($folder, 0777, true, true);
+        }
+
+        return $folder;
+    }
+
+    public static function createFolderStorage($name){
+        //NAME FOLDER DI Models
+        $folder = storage_path('app/public/'.$name);
+
+        if(!File::isDirectory($folder)){
+            File::makeDirectory($folder, 0777, true, true);
+        }
+
+        return $folder;
+    }
+
+    //========================= FUNCTION MEMBUAT FOLDER =============================
+
 
     public static function createController($id){
-        $main_folder = app_path().'\Http\Controller';
 
+        //MENGAMBIL DATA DARI MODULES
+        
         $fetch = CmsModules::where('id',$id)->first();
 
         $name               = $fetch->name;
         $icon               = $fetch->middleware;
-        $url                = $fetch->url;
         $controller         = $fetch->controller;
         $model              = $fetch->model;
         $table              = $fetch->table;
-        $is_active          = $fetch->is_active;
+        $status             = $fetch->status;
         $folder_controller  = $fetch->folder_controller;
         $folder_model       = $fetch->folder_model;
-        $folder_file        = $fetch->folder_file;
+        $folder_storage     = $fetch->folder_storage;
         
 
         $php = '
@@ -321,18 +361,6 @@ class Nfs {
         $path = base_path("app/Http/Controllers/");
         file_put_contents($path.'Api'.$controller_name.'Controller.php', $php);
     }
-
-    public static function createModel(){
-        $main_folder = app_path().'\Models';
-        
-    }
-
-    public static function createView(){
-
-        $main_folder = resource_path().'\views';
-        
-    }
-
 
 }
 
