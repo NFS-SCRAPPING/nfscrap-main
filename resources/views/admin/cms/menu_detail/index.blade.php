@@ -17,8 +17,8 @@
                     <tr>
                       <th class="head-white">menu</th>
                       <th class="head-white">method</th>
-                      <th class="head-white">url</th>
-                      <th class="head-white">view</th>
+                      <th class="head-white">url / route</th>
+                      <th class="head-white">blade / view</th>
                       <th class="head-white">function</th>
                       <th class="head-white">action</th>
                     </tr>
@@ -54,12 +54,12 @@
                                         <input type="hidden" value="{{$key->cms_menus_id}}" name="cms_menus_id">
 
                                         <div class="form-group">
-                                            <label for="url">url</label>
+                                            <label for="url">url / route</label>
                                             <input type="text" class="form-control" value="{{$key->url}}" name="url" id="url" placeholder="url">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="view">view</label>
+                                            <label for="view">blade / view</label>
                                             <input type="text" class="form-control" value="{{$key->view}}" name="view" id="view" placeholder="view">
                                         </div>
 
@@ -69,7 +69,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="function">function</label>
+                                            <label for="function">function controller</label>
                                             <input type="text" class="form-control" value="{{$key->function}}" name="function" id="function" placeholder="function">
                                         </div>
                                     </div>
@@ -132,12 +132,12 @@
                 <input type="hidden" value="{{$row->id}}" name="cms_menus_id">
 
                 <div class="form-group">
-                    <label for="url">url</label>
+                    <label for="url">url / route</label>
                     <input type="text" class="form-control" name="url" id="url" placeholder="url">
                   </div>
 
                   <div class="form-group">
-                    <label for="view">view</label>
+                    <label for="view">blade / view</label>
                     <input type="text" class="form-control" name="view" id="view" placeholder="view">
                   </div>
 
@@ -147,7 +147,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="function">function</label>
+                    <label for="function">function controller</label>
                     <input type="text" class="form-control" name="function" id="function" placeholder="function">
                   </div>
             </div>

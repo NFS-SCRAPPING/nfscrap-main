@@ -16,7 +16,7 @@
                         <td>{{$row->sorter}}</td>
                     </tr>
                     <tr>
-                        <td>name</td>
+                        <td>name menu</td>
                         <td>:</td>
                         <td>{{$row->name}}</td>
                     </tr>
@@ -36,22 +36,22 @@
                         <td><i class="mdi {{$row->icon}}"></i> {{$row->icon}}</td>
                     </tr>
                     <tr>
-                        <td>url</td>
+                        <td>link / url</td>
                         <td>:</td>
                         <td>{{$row->url}}</td>
                     </tr>
                     <tr>
-                        <td>folder view</td>
+                        <td>mainFolder view</td>
                         <td>:</td>
                         <td>{{$row->folder}}</td>
                     </tr>
                     <tr>
-                        <td>view</td>
+                        <td>subFolder view</td>
                         <td>:</td>
                         <td>{{$row->view}}</td>
                     </tr>
                     <tr>
-                        <td>is_active</td>
+                        <td>is active</td>
                         <td>:</td>
                         <td>{{$row->is_active}}</td>
                     </tr>

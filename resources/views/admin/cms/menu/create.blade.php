@@ -13,7 +13,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('name')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('name / menu')}}</label>
                         <div class="col-sm-9">
                           <input type="text" name="name" class="form-control" required>
                         </div>
@@ -32,7 +32,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('folder view')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('mainFolder view')}}</label>
                         <div class="col-sm-9">
                           <input type="text" name="folder" class="form-control" required>
                         </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('url')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('link / url')}}</label>
                         <div class="col-sm-9">
                           <input type="text" name="url" class="form-control" required>
                         </div>
@@ -50,7 +50,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">{{Helper::uc('view blade')}}</label>
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('subFolder view')}}</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" name="view" required>
                         </div>
