@@ -25,9 +25,9 @@
                             <th>model</th>
                             <th>table</th>
                             <th>is_active</th>
-                            <th>folder_controller</th>
-                            <th>folder_model</th>
-                            <th>folder_file</th>
+                            <th>folder controller</th>
+                            <th>folder storage</th>
+                            <th>folder model</th>
                             <th>Settings ID</th>
                             <th>Action</th>
                           </tr>
@@ -44,8 +44,8 @@
                             <td>{{$key->table}}</td>
                             <td>{{$key->is_active}}</td>
                             <td>{{$key->folder_controller}}</td>
-                            <td>{{$key->folder_model}}</td>
                             <td>{{$key->folder_file}}</td>
+                            <td>{{$key->folder_model}}</td>
                             <td>{{$key->cms_settings_name}}</td>
                             <td>
                               <a href="{{url('admin/modules/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>

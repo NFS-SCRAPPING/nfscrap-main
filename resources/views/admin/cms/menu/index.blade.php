@@ -23,8 +23,8 @@
                             <th>icon</th>
                             <th>cms modules</th>
                             <th>url / link</th>
-                            <th>mainFolder view</th>
-                            <th>subFolder view</th>
+                            <th>main folder view</th>
+                            <th>sub folder view</th>
                             <th>is active</th>
                             <th>Menu Access</th>
                             <th>Action</th>

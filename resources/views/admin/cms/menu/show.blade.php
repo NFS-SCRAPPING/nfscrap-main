@@ -41,12 +41,12 @@
                         <td>{{$row->url}}</td>
                     </tr>
                     <tr>
-                        <td>mainFolder view</td>
+                        <td>main folder view</td>
                         <td>:</td>
                         <td>{{$row->folder}}</td>
                     </tr>
                     <tr>
-                        <td>subFolder view</td>
+                        <td>sub folder view</td>
                         <td>:</td>
                         <td>{{$row->view}}</td>
                     </tr>

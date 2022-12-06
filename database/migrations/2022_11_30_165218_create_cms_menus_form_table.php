@@ -17,7 +17,7 @@ class CreateCmsMenusFormTable extends Migration
             $table->id();
             $table->integer('cms_menus_detial_id');
             $table->string('name');
-            $table->string('colomn');
+            $table->string('coloumn');
             $table->string('validasi');
             $table->string('type');
             $table->timestamps();
