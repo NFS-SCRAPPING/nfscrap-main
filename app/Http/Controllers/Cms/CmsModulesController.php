@@ -188,4 +188,18 @@ class CmsModulesController extends Controller
             return redirect()->back()->with('message','failed delete data')->with('message_type','warning');
         }
     }
+
+    public function generate($id)
+    {
+        $check = CmsMenus::where('cms_modules_id',$id)->first();
+
+        if($check){
+            Nfs::createController($id,$check->id);
+            Nfs::createModels($id,$check->id);
+
+            return redirect()->back()->with('message','success generate modules '.$check->name)->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','menu management not found, please create it')->with('message_type','warning');
+        }
+    }
 }

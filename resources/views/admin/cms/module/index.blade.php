@@ -28,7 +28,7 @@
                             <th>folder storage</th>
                             <th>folder model</th>
                             <th>Settings ID</th>
-                            <th>create modules</th>
+                            <th>generate modules</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -46,7 +46,7 @@
                             <td>{{$key->folder_storage}}</td>
                             <td>{{$key->folder_model}}</td>
                             <td>{{$key->cms_settings_name}}</td>
-                            <td><a href="{{url('admin/modules/show/'.$key->id)}}" class="btn btn-sm btn-success">klik disini untuk membuat modules</a></td>
+                            <td><a href="{{url('admin/modules/generate/'.$key->id)}}" class="btn btn-sm btn-success">klik generate</a></td>
                             <td>
                               <a href="{{url('admin/modules/show/'.$key->id)}}" class="btn btn-sm btn-primary">detail</a>
                               <a href="{{url('admin/modules/edit/'.$key->id)}}" class="btn btn-sm btn-warning">edit</a>

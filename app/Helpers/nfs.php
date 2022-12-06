@@ -20,6 +20,9 @@ use App\Models\Cms\CmsLogs;
 use App\Models\Cms\CmsRoleAccess;
 use App\Models\Cms\CmsMenusDetail;
 
+use Illuminate\Support\Facades\Schema;
+
+
 class Nfs {
    
     //default nama app
@@ -142,6 +145,14 @@ class Nfs {
         $delete_menus       = CmsMenus::where('id',$cms_menus_id)->delete();
 
         return $delete_menus;
+    }
+
+    public static function updateAllMenusRelasi($cms_menus_id){
+        $delete_menu_access = CmsMenusAccess::where('cms_menus_id',$cms_menus_id)->delete();
+        $delete_menu_detail = CmsMenusDetail::where('cms_menus_id',$cms_menus_id)->delete();
+        $delete_role_access = CmsRoleAccess::where('cms_menus_id',$cms_menus_id)->delete();
+
+        return $delete_menu_detail;
     }
 
     //MEMBUAT DEFAULT MENU ACCESS, ROLE ACCESS , MENU DETAIL SAAT MEMBUAT MENU
@@ -271,14 +282,46 @@ class Nfs {
         return $folder;
     }
 
+    public static function createFolderMainView($main){
+        //NAME FOLDER DI Models
+        $folder = resource_path($main.'/');
+
+        if(!File::isDirectory($folder)){
+            File::makeDirectory($folder, 0777, true, true);
+        }
+
+        return $folder;
+    }
+
+    public static function createFolderSubView($main,$sub){
+        //NAME FOLDER DI Models
+        $folder = resource_path($main.'/'.$sub.'/');
+
+        if(!File::isDirectory($folder)){
+            File::makeDirectory($folder, 0777, true, true);
+        }
+
+        return $folder;
+    }
+
     //========================= FUNCTION MEMBUAT FOLDER =============================
 
+    //GET SCHEMAA TABEL
+    public static function getTableColumns($table)
+        {
+            // OR
 
-    public static function createController($id){
+            return Schema::getColumnListing($table);
+
+        }
+
+
+    public static function createController($id,$cms_menu_id){
 
         //MENGAMBIL DATA DARI MODULES
-        
+
         $fetch = CmsModules::where('id',$id)->first();
+        $menu  = CmsMenus::where('id',$cms_menu_id)->first();
 
         $name               = $fetch->name;
         $icon               = $fetch->middleware;
@@ -289,14 +332,20 @@ class Nfs {
         $folder_controller  = $fetch->folder_controller;
         $folder_model       = $fetch->folder_model;
         $folder_storage     = $fetch->folder_storage;
+
+        //CREATE FOLDER
+        Self::createFolderController($folder_controller);
+        Self::createFolderModels($folder_controller);
+        Self::createFolderStorage($folder_storage);
         
 
         $php = '
-		<?php namespace App\Http\Controllers\"'.$folder_controller.'";;
-
+		<?php namespace App\Http\Controllers\\'.$folder_controller.';';
+        
+        $php .= "\n".'
 		use App\Http\Controllers\Controller;
-        #PACKAGE
         use Illuminate\Http\Request;
+        #PACKAGE
         use Illuminate\Support\Facades\Auth;
         use Illuminate\Support\Str;
         use Illuminate\Support\Facades\Mail;
@@ -319,9 +368,29 @@ class Nfs {
         use App\Models\User;
         use App\Models\Cms\Role;
         use App\Models\Cms\CmsSettings;
+        use App\Models\Cms\CmsModules;
+        use App\Models\Cms\CmsMenus;
+        use App\Models\Cms\CmsMenusAccess;
+        use App\Models\Cms\CmsRoleAccess;
 
 		class '.$controller.' extends Controller {
 		';
+
+        $php .="\n".'
+            public static function init($menu_id){
+                $cms_menu_id            = Nfs::Decrypt($menu_id);
+                //enkripsi
+        
+                $menu                   = CmsMenus::fetchOne($cms_menu_id);
+                $data["access"]         = Nfs::roleAccess(Session::get("cms_role_id"),$cms_menu_id);
+                $data["title"]          = "'.$menu->name.'";
+                $data["description"]    = "ini adalah menu management '.$menu->name.'";
+                $data["users"]          = User::fetch_one(Session::get("id"));
+                $data["tabel"]          = "'.$table.'";
+                $data["link"]           = $menu->url;
+                return $data;
+            }
+        ';
 
         $php .= "\n".'
             /**
@@ -329,11 +398,17 @@ class Nfs {
              *
              * @return \Illuminate\Http\Response
              */
-            public function index()
+            public function index($menu_id)
             {
-		        
+                $data = Self::init($menu_id);
 
-		    }';
+                if($data["access"]->is_view == "false" || $data["access"]->is_view == null ){
+                    return redirect("dashboard")->with("message","cannot access this menu, you dont have prifileges")
+                        ->with("message_type","danger");
+                }
+
+                return view("admin.'.$menu->main_folder.'.'.$menu->sub_folder.'.index",$data);
+            }';
 
         $php .= "\n".'
             /**
@@ -341,40 +416,199 @@ class Nfs {
              *
              * @return \Illuminate\Http\Response
              */
-            public function create()
+            public function create($menu_id)
+            {
+                $data = Self::init($menu_id);
+
+                if($data["access"]->is_view == "false" || $data["access"]->is_view == null ){
+                    return redirect("dashboard")->with("message","cannot access this menu, you dont have prifileges")
+                        ->with("message_type","danger");
+                }
+
+                return view("admin.'.$menu->main_folder.'.'.$menu->sub_folder.'.create",$data);
+            }';
+
+        $php .= "\n".'
+            /**
+             * Show the form for creating a new resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function edit($menu_id,$id)
+            {
+                $data = Self::init($menu_id);
+
+                if($data["access"]->is_view == "false" || $data["access"]->is_view == null ){
+                    return redirect("dashboard")->with("message","cannot access this menu, you dont have prifileges")
+                        ->with("message_type","danger");
+                }
+
+                return view("admin.'.$menu->main_folder.'.'.$menu->sub_folder.'.edit",$data);
+            }';
+
+        $php .= "\n".'
+            /**
+             * Show the form for creating a new resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function show($menu_id,$id)
+            {
+                $data = Self::init($menu_id);
+
+                if($data["access"]->is_view == "false" || $data["access"]->is_view == null ){
+                    return redirect("dashboard")->with("message","cannot access this menu, you dont have prifileges")
+                        ->with("message_type","danger");
+                }
+
+                return view("admin.'.$menu->main_folder.'.'.$menu->sub_folder.'.show",$data);
+            }';
+
+        $php .= "\n".'
+            /**
+             * Show the form for creating a new resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function store(Request $request)
             {
                 
+
+                if($save){
+                    return redirect()->back()->with("message","success save data")->with("message_type","primary");
+                }else{
+                    return redirect()->back()->with("message","failed save data")->with("message_type","warning");
+                }
+            }';
+
+        $php .= "\n".'
+            /**
+             * Show the form for creating a new resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function update(Request $request)
+            {
+                
+
+                if($update){
+                    return redirect()->back()->with("message","success update data")->with("message_type","primary");
+                }else{
+                    return redirect()->back()->with("message","failed update data")->with("message_type","warning");
+                }
+            }';
+
+        $php .= "\n".'
+            /**
+             * Show the form for creating a new resource.
+             *
+             * @return \Illuminate\Http\Response
+             */
+            public function destroy($menu_id,$id)
+            {
+                $data = Self::init($menu_id);
+
+                if($data["access"]->is_view == "false" || $data["access"]->is_view == null ){
+                    return redirect("dashboard")->with("message","cannot access this menu, you dont have prifileges")
+                        ->with("message_type","danger");
+                }
+
+                if($delete){
+                    return redirect()->back()->with("message","success delete data")->with("message_type","primary");
+                }else{
+                    return redirect()->back()->with("message","failed delete data")->with("message_type","warning");
+                }
             }
-        ';
-
-        $php .= "\n".'
-		    public function hook_after($postdata,&$result) {
-		        //This method will be execute after run the main process
-
-		    }';
-
-        $php .= "\n".'
-		}
-		';
+            
+        }';
 
         $php = trim($php);
-        $path = base_path("app/Http/Controllers/");
-        file_put_contents($path.'Api'.$controller_name.'Controller.php', $php);
+        $path = base_path("app/Http/Controllers/".$folder_controller."/");
+        file_put_contents($path.$controller.'.php', $php);
+
+        return true;
+    }
+
+    public static function createModels($id,$cms_menu_id){
+
+        //MENGAMBIL DATA DARI MODULES
+
+        $fetch = CmsModules::where('id',$id)->first();
+        $menu  = CmsMenus::where('id',$cms_menu_id)->first();
+
+        $name               = $fetch->name;
+        $icon               = $fetch->middleware;
+        $controller         = $fetch->controller;
+        $model              = $fetch->model;
+        $table              = $fetch->table;
+        $status             = $fetch->status;
+        $folder_controller  = $fetch->folder_controller;
+        $folder_model       = $fetch->folder_model;
+        $folder_storage     = $fetch->folder_storage;
+
+        $schema = Self::getTableColumns($table);
+
+        $txt = '';
+        for($i=0;$i<count($schema);$i++){
+            $txt .='"'.$schema[$i].'",';
+        }
+
+        $php ="\n".'
+		<?php 
+        
+        namespace App\Models\\'.$folder_model.';';
+
+        $php .= "\n".'
+		use Illuminate\Database\Eloquent\Factories\HasFactory;
+        use Illuminate\Database\Eloquent\Model;
+        #PACKAGE
+        use Illuminate\Support\Facades\Auth;
+        use Illuminate\Support\Str;
+        use Illuminate\Support\Facades\Mail;
+        use Illuminate\Support\Facades\Http;
+        use Illuminate\Support\Facades\DB;
+        use Ixudra\Curl\Facades\Curl;
+        use Illuminate\Support\Facades\Session;
+        use Carbon\Carbon;
+        use Validator;
+        use Hash;
+        #HELPER
+        use Cron;
+        use Date;
+        use Fibonanci;
+        use Helper;
+        use Nfs;
+        use Payments;
+        use Wa;
+        #MODEL
+        use App\Models\User;
+        use App\Models\Cms\Role;
+        use App\Models\Cms\CmsSettings;
+        use App\Models\Cms\CmsModules;
+        use App\Models\Cms\CmsMenus;
+        use App\Models\Cms\CmsMenusAccess;
+        use App\Models\Cms\CmsRoleAccess;
+
+		class '.$model.' extends Model {
+		';
+
+        $php .= "\n".'
+        use HasFactory;
+        protected $table = "'.$table.'";
+        ';
+        
+        $php .= "\n".'
+        protected $fillable = [
+            '.$txt.'
+        ];
+    
+    }';
+
+        $php = trim($php);
+        $path = base_path("app/Models/".$folder_model."/");
+        file_put_contents($path.$model.'.php', $php);
+
+        return true;
     }
 
 }
-
-// // Path to the project's root folder    
-// echo base_path();
-
-// // Path to the 'app' folder    
-// echo app_path();        
-
-// // Path to the 'public' folder    
-// echo public_path();
-
-// // Path to the 'storage' folder    
-// echo storage_path();
-
-// // Path to the 'storage/app' folder    
-// echo storage_path('app');

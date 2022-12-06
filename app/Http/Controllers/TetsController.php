@@ -7,6 +7,6 @@ use Nfs;
 class TetsController extends Controller
 {
     public function index(){
-        dd(Nfs::controller());
+        dd(Nfs::getTableColumns("cms_role"));
     }
 }

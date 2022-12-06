@@ -79,7 +79,7 @@ class CmsMenus extends Model
             'sorter'            => $request->sorter,
         ]);
 
-        $delete = Nfs::deleteAllMenusRelasi($request->id);
+        $delete = Nfs::updateAllMenusRelasi($request->id);
 
         $update = Nfs::createDeafultValue($request->id);
 

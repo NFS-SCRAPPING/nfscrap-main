@@ -19,6 +19,7 @@ use App\Http\Controllers\Cms\CmsMenusDetailController;
 
 // MANAGEMENT CLASS
 use App\Http\Controllers\Microservice\LinkedinController;
+use App\Http\Controllers\Microservice\InstagramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,22 @@ Route::middleware(['web'])->group(function () {
         Route::post("linkedin/update",[LinkedinController::class,"update"]);
 
         Route::get("linkedin/destroy/{menu_detail}/{id}",[LinkedinController::class,"destroy"]);
+
+
+        Route::get("instagram/{menu_detail}",[InstagramController::class,"index"]);
+
+        Route::get("instagram/create/{menu_detail}",[InstagramController::class,"create"]);
+
+        Route::get("instagram/edit/{menu_detail}/{id}",[InstagramController::class,"edit"]);
+
+        Route::get("instagram/show/{menu_detail}/{id}",[InstagramController::class,"show"]);
+
+        Route::post("instagram/store",[InstagramController::class,"store"]);
+
+        Route::post("instagram/update",[InstagramController::class,"update"]);
+
+        Route::get("instagram/destroy/{menu_detail}/{id}",[InstagramController::class,"destroy"]);
+
     });
 
 });
@@ -111,6 +128,7 @@ Route::middleware(['web'])->group(function () {
                     Route::post('modules/store',[CmsModulesController::class, 'store'])->name('modules-store');
                     Route::post('modules/update',[CmsModulesController::class, 'update'])->name('modules-update');
                     Route::post('modules/action/{slug}/{id}',[CmsModulesController::class, 'action']);
+                    Route::get('modules/generate/{id}',[CmsModulesController::class, 'generate'])->name('modules-generate');
 
                     Route::get('menus',[CmsMenusController::class, 'index'])->name('menus');
                     Route::get('menus/create',[CmsMenusController::class, 'create'])->name('menus-create');

@@ -30,7 +30,7 @@
         use App\Models\Cms\CmsMenusAccess;
         use App\Models\Cms\CmsRoleAccess;
 
-		class LinkedinController extends Controller {
+		class InstagramController extends Controller {
 		
 
             public static function init($menu_id){
@@ -39,10 +39,10 @@
         
                 $menu                   = CmsMenus::fetchOne($cms_menu_id);
                 $data["access"]         = Nfs::roleAccess(Session::get("cms_role_id"),$cms_menu_id);
-                $data["title"]          = "Linkedin";
-                $data["description"]    = "ini adalah menu management Linkedin";
+                $data["title"]          = "Instagram";
+                $data["description"]    = "ini adalah menu management Instagram";
                 $data["users"]          = User::fetch_one(Session::get("id"));
-                $data["tabel"]          = "linkedind";
+                $data["tabel"]          = "instagram";
                 $data["link"]           = $menu->url;
                 return $data;
             }
@@ -62,7 +62,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.index",$data);
+                return view("admin.microservice.instagram.index",$data);
             }
 
             /**
@@ -79,7 +79,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.create",$data);
+                return view("admin.microservice.instagram.create",$data);
             }
 
             /**
@@ -96,7 +96,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.edit",$data);
+                return view("admin.microservice.instagram.edit",$data);
             }
 
             /**
@@ -113,7 +113,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.show",$data);
+                return view("admin.microservice.instagram.show",$data);
             }
 
             /**
