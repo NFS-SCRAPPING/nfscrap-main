@@ -17,6 +17,9 @@ use App\Http\Controllers\Cms\CmsRoleAccessController;
 use App\Http\Controllers\Cms\UsersController;
 use App\Http\Controllers\Cms\CmsMenusDetailController;
 
+// MANAGEMENT CLASS
+use App\Http\Controllers\Microservice\LinkedinController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +41,17 @@ Route::middleware(['web'])->group(function () {
         Route::get('test',[TetsController::class, 'index']);
 
         Route::post('logout',[AuthController::class, 'logout']);
+
+        //URL AUTO GENERATE
+
+        Route::get("linkedin/{menu_id}",[LinkedinController::class,"index"]);
+        Route::get("linkedin/create/{menu_id}",[LinkedinController::class,"create"]);
+        Route::get("linkedin/edit/{menu_id}",[LinkedinController::class,"edit"]);
+        Route::get("linkedin/show/{menu_id}",[LinkedinController::class,"show"]);
+        Route::get("linkedin/destroy/{id}",[LinkedinController::class,"destroy"]);
+        Route::post("linkedin/store",[LinkedinController::class,"store"]);
+        Route::post("linkedin/update",[LinkedinController::class,"update"]);
+   
 
         Route::group(['prefix' => 'admin','middleware' => ['admin']], function () {
 

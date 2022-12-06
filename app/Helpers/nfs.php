@@ -48,7 +48,7 @@ class Nfs {
         $text = [];
         foreach($data as $key){
            $route  = explode("(", $key->route_function);
-           $url['url']='Route::'.$key->route_method.'('.$key->url.',['.$key->controller.'::class,'.$route[0].']);';
+           $url['url']='Route::'.$key->route_method.'("'.$key->route_url.'",['.$key->controller.'::class,"'.$route[0].'"]);';
            array_push($text,$url);
         }
 
@@ -60,7 +60,7 @@ class Nfs {
         $data = CmsModules::all();
         $text = [];
         foreach($data as $key){
-            $list['class'] = "use \App\Http\Controller\\".$key->folder_controller.'\\'.$key->controller;
+            $list['class'] = "use App\Http\Controllers\\".$key->folder_controller.'\\'.$key->controller.';';
 
             array_push($text,$list);
         }

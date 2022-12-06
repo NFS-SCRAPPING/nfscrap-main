@@ -91,6 +91,31 @@
     </div>
 </div>
 
+
+<div class="row mt-20">
+  <div class="col-sm-12">
+    <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Copy Paste To web.php</h4>
+            <p>LIST CLASS</p>
+            @foreach(Nfs::controller() as $class)
+
+                <p style="color: red">{{$class['class']}}</p>
+            
+            @endforeach
+            <br>
+
+            <p>LIST ROUTE</p>
+            @foreach(Nfs::route() as $route)
+
+                <p style="color: aqua">{{$route['url']}}</p>
+
+            @endforeach
+        </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="add" tabindex="-1" aria-labelledby="add" aria-hidden="true">
     <div class="modal-dialog">

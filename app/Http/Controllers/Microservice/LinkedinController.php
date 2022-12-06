@@ -42,12 +42,14 @@ class LinkedinController extends Controller
     public static function init($menu_id){
         $cms_menu_id            = Nfs::Decrypt($menu_id);
         //enkripsi
+
+        $menu                   = CmsMenus::fetchOne($cms_menu_id);
         $data['access']         = Nfs::roleAccess(Session::get('cms_role_id'),$cms_menu_id);
         $data['title']          = 'Linkedin';
         $data['description']    = 'ini adalah menu management linkedin';
         $data['users']          = User::fetch_one(Session::get('id'));
         $data['tabel']          = 'linkedin';
-
+        $data['link']           = $menu->url;
         return $data;
     }
 
@@ -55,8 +57,8 @@ class LinkedinController extends Controller
     {
         $data = Self::init($menu_id);
 
-        if($data['access']->is_view == "false"){
-            return redirect('dashboard')->back()->with('message','cannot access this menu, you dont have profileges')
+        if($data['access']->is_view == "false" || $data['access']->is_view == null ){
+            return redirect('dashboard')->with('message','cannot access this menu, you dont have prifileges')
                    ->with('message_type','danger');
         }
 
@@ -72,8 +74,8 @@ class LinkedinController extends Controller
     {
         $data = Self::init($menu_id);
 
-        if($data['access']->is_create == "false"){
-            return redirect('dashboard')->back()->with('message','cannot access this menu, you dont have profileges')
+        if($data['access']->is_create == "false" || $data['access']->is_create == null ){
+            return redirect('dashboard')->with('message','cannot access this menu, you dont have prifileges')
                    ->with('message_type','danger');
         }
 
@@ -101,8 +103,8 @@ class LinkedinController extends Controller
     {
         $data = Self::init($menu_id);
 
-        if($data['access']->is_detail == "false"){
-            return redirect('dashboard')->back()->with('message','cannot access this menu, you dont have profileges')
+        if($data['access']->is_detail == "false" || $data['access']->is_detail == null){
+            return redirect('dashboard')->with('message','cannot access this menu, you dont have prifileges')
                    ->with('message_type','danger');
         }
 
@@ -119,8 +121,8 @@ class LinkedinController extends Controller
     {
         $data = Self::init($menu_id);
 
-        if($data['access']->is_edit == "false"){
-            return redirect('dashboard')->back()->with('message','cannot access this menu, you dont have profileges')
+        if($data['access']->is_edit == "false" || $data['access']->is_edit == null){
+            return redirect('dashboard')->with('message','cannot access this menu, you dont have prifileges')
                    ->with('message_type','danger');
         }
 
@@ -147,6 +149,9 @@ class LinkedinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($data['access']->is_delete == "false" || $data['access']->is_delete == null){
+            return redirect('dashboard')->with('message','cannot access this menu, you dont have prifileges')
+                   ->with('message_type','danger');
+        }
     }
 }
