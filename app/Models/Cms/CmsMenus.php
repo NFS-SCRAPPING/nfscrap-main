@@ -36,6 +36,7 @@ class CmsMenus extends Model
     public static function fetchAll(){
         $data = CmsMenus::leftJoin('cms_modules','cms_menus.cms_modules_id','=','cms_modules.id')
                 ->leftJoin('cms_menus as parent','cms_menus.parent_id','=','parent.id')
+                ->whereNull('cms_menus.parent_id')
                 ->select('cms_menus.*','parent.name as parent_name','cms_modules.name as cms_modules_name')
                 ->orderBy('cms_menus.sorter','asc')
                 ->get();
@@ -63,6 +64,8 @@ class CmsMenus extends Model
         if($request->type == 'full module'){
             $id = $save->id;
             Nfs::createDeafultValue($id);
+        }else{
+            Nfs::createDeafultValueOnlyMenu($id);
         }
 
         return $save;
@@ -88,6 +91,8 @@ class CmsMenus extends Model
             $delete = Nfs::updateAllMenusRelasi($request->id);
 
             $update = Nfs::createDeafultValue($request->id);
+        }else{
+            Nfs::createDeafultValueOnlyMenu($id);
         }
 
         return $update;

@@ -87,7 +87,33 @@ class Nfs {
         $data = CmsMenus::leftJoin('cms_menus_access','cms_menus.id','=','cms_menus_access.cms_menus_id')
                 ->leftJoin('cms_role','cms_menus_access.cms_role_id','=','cms_role.id')
                 ->join('users','cms_role.id','=','users.cms_role_id')
+                ->whereNull('cms_menus.parent_id')
                 ->where('users.id',$user_id)
+                ->orderBy('cms_menus.sorter','desc')
+                ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
+                ->get();
+        
+        return $data;
+    }
+
+    //DIGUNAKAN DI SUB MENU MANAGEMENT DAN SIDEBAR
+    public static function submenu($parent_id)
+    {
+        $data = CmsMenus::where('cms_menus.parent_id',$parent_id)
+                ->orderBy('cms_menus.sorter','desc')
+                ->get();
+        
+        return $data;
+    }
+
+    public static function submenuSidebar($user_id,$parent_id)
+    {
+        $data = CmsMenus::leftJoin('cms_menus_access','cms_menus.id','=','cms_menus_access.cms_menus_id')
+                ->leftJoin('cms_role','cms_menus_access.cms_role_id','=','cms_role.id')
+                ->join('users','cms_role.id','=','users.cms_role_id')
+                ->where('cms_menus.parent_id',$parent_id)
+                ->where('users.id',$user_id)
+                ->orderBy('cms_menus.sorter','desc')
                 ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
                 ->get();
         
@@ -156,6 +182,41 @@ class Nfs {
     }
 
     //MEMBUAT DEFAULT MENU ACCESS, ROLE ACCESS , MENU DETAIL SAAT MEMBUAT MENU
+
+    public static function createDeafultValueOnlyMenu($cms_menus_id){
+        //MENGAMBIL INFO MENU DETAIL
+        $fetch = CmsMenus::where('id',$cms_menus_id)->first();
+        
+        //MEMBUAT ROLE ACCESS
+        $role = Role::all();
+        $role_access = [];
+        foreach($role as $key){
+            $list['cms_role_id']    = $key->id;
+            $list['cms_menus_id']   = $cms_menus_id;
+            $list['is_view']        = "false";
+            $list['is_create']      = "false";
+            $list['is_edit']        = "false";
+            $list['is_detail']      = "false";
+            $list['is_delete']      = "false";
+
+            array_push($role_access,$list);
+        }
+        CmsRoleAccess::insert($role_access);
+
+        //MEMBUAT MENU ACCESS
+        DB::table('cms_menus_access')->insert([
+            [
+                "cms_menus_id" => $cms_menus_id,
+                "cms_role_id"  => 1,
+            ],
+            [
+                "cms_menus_id" => $cms_menus_id,
+                "cms_role_id"  => 2,
+            ],
+        ]);
+
+        return true;
+    }
 
     public static function createDeafultValue($cms_menus_id){
         //MENGAMBIL INFO MENU DETAIL

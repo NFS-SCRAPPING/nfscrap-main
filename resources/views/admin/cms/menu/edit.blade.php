@@ -105,6 +105,7 @@
                             <div class="col-sm-9">
                                 <select class="js-example-basic-single" name="parent_id" style="width:100%">
                                 <option value="{{$row->parent_id}}" selected>{{$row->parent_name}}</option>
+                                <option value="" selected>reset select null</option>
                                 @foreach($cms_menus as $menus)
                                     <option value="{{$menus->id}}">{{$menus->name}}</option>
                                 @endforeach
