@@ -10,6 +10,10 @@
                     <h4 class="card-title">{{$title}}</h4>
                     <div class="mt-10">
                         <ul>
+                            <li>Bandung Desember 2022</li>
+                            <li>By nfs <a href="https://github.com/nifist99">https://github.com/nifist99</a></li>
+                            <li>Black Template</li>
+                            <li>Cms version 0.0.1</li>
                             <li>Requirement php 7.4 - 8.1</li>
                             <li>Laravel 8/9</li>
                         </ul>
