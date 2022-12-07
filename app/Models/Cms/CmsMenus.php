@@ -20,6 +20,7 @@ class CmsMenus extends Model
         'sub_folder',
         'status',
         'sorter',
+        'type',
     ];
 
     public static function fetchOne($id){
@@ -55,11 +56,14 @@ class CmsMenus extends Model
             'sub_folder'     => $request->sub_folder,
             'status'         => $request->status,
             'sorter'         => $request->sorter,
+            'type'           => $request->type,
         ]);
 
         //melakukan insert default di access menu
-        $id = $save->id;
-        Nfs::createDeafultValue($id);
+        if($request->type == 'full module'){
+            $id = $save->id;
+            Nfs::createDeafultValue($id);
+        }
 
         return $save;
 
@@ -77,11 +81,14 @@ class CmsMenus extends Model
             'sub_folder'        => $request->sub_folder,
             'status'            => $request->status,
             'sorter'            => $request->sorter,
+            'type'              => $request->type,
         ]);
 
-        $delete = Nfs::updateAllMenusRelasi($request->id);
+        if($request->type == 'full module'){
+            $delete = Nfs::updateAllMenusRelasi($request->id);
 
-        $update = Nfs::createDeafultValue($request->id);
+            $update = Nfs::createDeafultValue($request->id);
+        }
 
         return $update;
 

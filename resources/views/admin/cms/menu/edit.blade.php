@@ -112,6 +112,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">{{Helper::uc('type')}}</label>
+                        <div class="col-sm-9">
+                          <select class="form-control" name="type" required>
+                            <option value="{{$row->type}}" selected>{{$row->type}}</option>
+                            <option>full module</option>
+                            <option>only menu</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <div>

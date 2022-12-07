@@ -194,14 +194,19 @@ class CmsModulesController extends Controller
     public function generate($id)
     {
 
-        $check = CmsMenus::where('cms_modules_id',$id)->first();
+        $check = CmsMenus::where('cms_modules_id',$id)->where('type','full module')->first();
 
         if($check){
-            Nfs::createController($id,$check->id);
-            Nfs::createModels($id,$check->id);
-            Nfs::createView($check->id);
+            if($check->type == 'full module'){
+                Nfs::createController($id,$check->id);
+                Nfs::createModels($id,$check->id);
+                Nfs::createView($check->id);
 
-            return redirect()->back()->with('message','success generate modules '.$check->name)->with('message_type','primary');
+                return redirect()->back()->with('message','success generate modules '.$check->name)->with('message_type','primary');
+            }else{
+                return redirect()->back()->with('message','menu management type full module not found, please create it')->with('message_type','warning');
+            }
+            
         }else{
             return redirect()->back()->with('message','menu management not found, please create it')->with('message_type','warning');
         }

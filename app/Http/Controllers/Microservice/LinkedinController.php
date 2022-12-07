@@ -62,7 +62,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.index",$data);
+                return view("admin.Microservice.linkedin.index",$data);
             }
 
             /**
@@ -79,7 +79,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.create",$data);
+                return view("admin.Microservice.linkedin.create",$data);
             }
 
             /**
@@ -96,7 +96,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.edit",$data);
+                return view("admin.Microservice.linkedin.edit",$data);
             }
 
             /**
@@ -113,7 +113,7 @@
                         ->with("message_type","danger");
                 }
 
-                return view("admin.microservice.linkedin.show",$data);
+                return view("admin.Microservice.linkedin.show",$data);
             }
 
             /**

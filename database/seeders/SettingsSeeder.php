@@ -19,9 +19,20 @@ class SettingsSeeder extends Seeder
         DB::table('cms_settings')->insert([
             [
                 'name'       => 'app',
-                'name'       => 'app',
+                'value'       => 'app',
                 'description'=> 'silahkan isi nama aplikasi',
-            ]
+            ],
+            [
+                'name'       => 'email',
+                'value'       => 'demo@gmail.com',
+                'description'=> 'silahkan isi email smtp',
+            ],
+            [
+                'name'       => 'domain',
+                'value'       => 'demo.com',
+                'description'=> 'silahkan isi domain',
+            ],
+            
 
         ]);
     }
