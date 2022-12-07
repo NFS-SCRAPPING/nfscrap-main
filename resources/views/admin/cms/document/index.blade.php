@@ -22,6 +22,7 @@
                         <p>Cara instalasi di local komputer</p>
                         <ul>
                             <li>composer update</li>
+                            <li>php artisan migrate</li>
                             <li>php artisan passport:install --uuids</li>
                             <li>php artisan db:seed</li>
                             <li>php artisan storage:link</li>

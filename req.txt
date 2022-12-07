@@ -33,6 +33,8 @@ https://github.com/asantibanez/laravel-blade-sortable
 
 JS PLUGIN
 
+git remote set-url origin https://github.com/USERNAME/OTHERREPOSITORY.git
+
 https://fslightbox.com/javascript/download
 
 kita rubah personal_access_tokens agar bisa digunakan di users yg uuid defaultnya string
