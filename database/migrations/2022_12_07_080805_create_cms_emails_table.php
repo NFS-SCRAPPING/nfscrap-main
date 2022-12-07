@@ -15,6 +15,15 @@ class CreateCmsEmailsTable extends Migration
     {
         Schema::create('cms_emails', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('image')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('subject')->nullable();
+            $table->text('content')->nullable();
+            $table->text('description')->nullable();
+            $table->string('from_name')->nullable();
+            $table->string('from_email')->nullable();
+            $table->string('cc_email')->nullable();
             $table->timestamps();
         });
     }

@@ -151,10 +151,10 @@
           </a>
         </li>
 
-        <li class="nav-item menu-items">
-          <a class="nav-link" href="index.html">
+        <li class="nav-item menu-items @if($link=='cms_emails') nav-active @endif">
+          <a class="nav-link" href="{{url('admin/emails')}}">
             <span class="menu-icon">
-              <i class="mdi mdi-email"></i>
+              <i class="mdi mdi-code-not-equal-variant"></i>
             </span>
             <span class="menu-title">Email Templates</span>
           </a>

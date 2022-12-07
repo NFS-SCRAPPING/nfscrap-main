@@ -16,6 +16,7 @@ use App\Http\Controllers\Cms\RoleController;
 use App\Http\Controllers\Cms\CmsRoleAccessController;
 use App\Http\Controllers\Cms\UsersController;
 use App\Http\Controllers\Cms\CmsMenusDetailController;
+use App\Http\Controllers\Cms\CmsEmailsController;
 
 // MANAGEMENT CLASS
 use App\Http\Controllers\Microservice\LinkedinController;
@@ -147,6 +148,15 @@ Route::middleware(['web'])->group(function () {
                     Route::get('menu_detail/destroy/{id}', [CmsMenusDetailController::class, 'destroy']);
                     Route::post('menu_detail/store', [CmsMenusDetailController::class, 'store']);
                     Route::post('menu_detail/update', [CmsMenusDetailController::class, 'update']);
+
+
+                    Route::get('emails',[CmsEmailsController::class, 'index'])->name('emails');
+                    Route::get('emails/create',[CmsEmailsController::class, 'create'])->name('emails-create');
+                    Route::get('emails/show/{id}',[CmsEmailsController::class, 'show'])->name('emails-show');
+                    Route::get('emails/edit/{id}',[CmsEmailsController::class, 'edit'])->name('emails-edit');
+                    Route::get('emails/destroy/{id}',[CmsEmailsController::class, 'destroy'])->name('emails-destroy');
+                    Route::post('emails/store',[CmsEmailsController::class, 'store'])->name('emails-store');
+                    Route::post('emails/update',[CmsEmailsController::class, 'update'])->name('emails-update');
             });
 
         });

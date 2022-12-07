@@ -25,6 +25,8 @@
 
     <script src="{{url('assets/vendors/lightbox/fslightbox.js')}}"></script>
 
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+
     <script>
         $(function() { 
             $(".nav-item.menu-items.active").removeClass("active"); 
