@@ -139,6 +139,7 @@ Route::middleware(['web'])->group(function () {
                     Route::post('menus/store',[CmsMenusController::class, 'store'])->name('menus-store');
                     Route::post('menus/update',[CmsMenusController::class, 'update'])->name('menus-update');
                     Route::get('menus/action/{id}',[CmsMenusController::class, 'action']);
+                    Route::get('menus/status/{id}/{status}',[CmsMenusController::class, 'status']);
 
                     Route::get('menu_access/{cms_menus_id}',[CmsMenusAccessController::class, 'index']);
                     Route::get('menu_access/destroy/{id}',[CmsMenusAccessController::class, 'destroy']);

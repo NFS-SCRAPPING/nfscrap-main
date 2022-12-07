@@ -189,4 +189,19 @@ class CmsMenusController extends Controller
 
         return view('admin.cms.menu.subaction',$data);
     }
+
+    public function status($id,$status)
+    {   
+        //delete semua relasi menus
+        $update = CmsMenus::where('id',$id)
+                ->update([
+                    "status"=>$status
+                ]);
+        
+        if($update){
+            return redirect()->back()->with('message','success update status')->with('message_type','primary');
+        }else{
+            return redirect()->back()->with('message','failed update status')->with('message_type','warning');
+        }
+    }
 }

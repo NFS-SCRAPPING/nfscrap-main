@@ -58,6 +58,15 @@
                         </thead>
                         <tbody>
                           @foreach($cms_menus as $key)
+
+                              @php
+                                  if($key->status == 'active'){
+                                    $btn = 'success';
+                                  }else{
+                                    $btn = 'danger';
+                                  }
+                              @endphp
+
                           <tr class="accordion-toggle collapsed" id="accordion{{$key->id}}" data-toggle="collapse" data-parent="#accordion{{$key->id}}" href="#collapse{{$key->id}}">
                             <td class="expand-button"></td>
                             <td>{{$key->sorter}}</td>
@@ -68,7 +77,17 @@
                             <td>{{$key->url}}</td>
                             <td>{{$key->main_folder}}</td>
                             <td>{{$key->sub_folder}}</td>
-                            <td>{{$key->status}}</td>
+                            <td>
+                              <div class="dropdown">
+                                <button class="btn btn-{{$btn}} btn-sm  dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{$key->status}}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <a class="dropdown-item" href="{{url('admin/menus/status/'.$key->id.'/active')}}">active</a>
+                                  <a class="dropdown-item" href="{{url('admin/menus/status/'.$key->id.'/notactive')}}">notactive</a>
+                                </div>
+                              </div>
+                            </td>
                             <td>
                               <a href="{{url('admin/menus/action/'.$key->id)}}" class="btn btn-sm btn-primary">menu setting</a>
                             </td>
@@ -87,7 +106,7 @@
                                         <div class="col-1">sorter</div>
                                         <div class="col-2">name</div>
                                         <div class="col-2">cms modules name</div>
-                                        <div class="col-1">icon</div>
+                                        <div class="col-1">status</div>
                                         <div class="col-1">url</div>
                                         <div class="col-2">
                                           menu access
@@ -100,6 +119,15 @@
                                 </td>
                               </tr>
                               @foreach(Nfs::submenu($key->id) as $sub)
+
+                              @php
+                                  if($sub->status == 'active'){
+                                    $btn_sub = 'success';
+                                  }else{
+                                    $btn_sub = 'danger';
+                                  }
+                              @endphp
+
                               <tr class="hide-table-padding">
                                 <td></td>
                                 <td colspan="11">
@@ -108,7 +136,19 @@
                                         <div class="col-1">{{$sub->sorter}}</div>
                                         <div class="col-2">{{$sub->name}}</div>
                                         <div class="col-2">{{$key->name}}</div>
-                                        <div class="col-1"><i class="mdi {{$sub->icon}}"></i></div>
+                                        <div class="col-1">
+
+                                          <div class="dropdown">
+                                            <button class="btn btn-{{$btn_sub}} btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              {{$sub->status}}
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                              <a class="dropdown-item" href="{{url('admin/menus/status/'.$sub->id.'/active')}}">active</a>
+                                              <a class="dropdown-item" href="{{url('admin/menus/status/'.$sub->id.'/notactive')}}">notactive</a>
+                                            </div>
+                                          </div>
+
+                                        </div>
                                         <div class="col-1">{{$sub->url}}</div>
                                         <div class="col-2">
                                           <a href="{{url('admin/menus/action/'.$sub->id)}}" class="btn btn-sm btn-primary">menu setting</a>
