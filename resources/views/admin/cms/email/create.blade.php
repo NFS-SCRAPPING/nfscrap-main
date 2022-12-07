@@ -91,7 +91,7 @@
                 <hr>
                 
                 <div class="form-group mt-20">
-                  <a class="btn btn-success" href="{{url('admin/settings')}}"><i class="mdi mdi-arrow-left-thick"></i>&nbsp;Back</a>
+                  <a class="btn btn-success" href="{{url('admin/emails')}}"><i class="mdi mdi-arrow-left-thick"></i>&nbsp;Back</a>
                     <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i>&nbsp;Submit</button>
                 </div>
 

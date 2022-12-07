@@ -289,3 +289,9 @@
     color: white;
     font-weight: 700px;
 }
+
+.img-show{
+    height: auto!important;
+    width: 300px!important;
+    border-radius: 10px!important;
+}
