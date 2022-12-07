@@ -92,7 +92,9 @@ class CmsMenus extends Model
 
             $update = Nfs::createDeafultValue($request->id);
         }else{
-            Nfs::createDeafultValueOnlyMenu($id);
+            $delete = Nfs::updateAllMenusRelasi($request->id);
+
+            $update = Nfs::createDeafultValueOnlyMenu($request->id);
         }
 
         return $update;

@@ -89,6 +89,7 @@ class Nfs {
                 ->join('users','cms_role.id','=','users.cms_role_id')
                 ->whereNull('cms_menus.parent_id')
                 ->where('users.id',$user_id)
+                ->where('cms_menus.status','active')
                 ->orderBy('cms_menus.sorter','desc')
                 ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
                 ->get();
@@ -113,6 +114,7 @@ class Nfs {
                 ->join('users','cms_role.id','=','users.cms_role_id')
                 ->where('cms_menus.parent_id',$parent_id)
                 ->where('users.id',$user_id)
+                ->where('cms_menus.status','active')
                 ->orderBy('cms_menus.sorter','desc')
                 ->select('cms_menus.*','cms_role.name as cms_role_name','cms_menus_access.*')
                 ->get();

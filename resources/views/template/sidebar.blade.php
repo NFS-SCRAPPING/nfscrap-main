@@ -67,16 +67,53 @@
           </a>
         </li>
 
+        
         @foreach (Nfs::menu(Session::get('id')) as $menu_access)
 
-        <li class="nav-item menu-items @if($link==$menu_access->url) nav-active @endif">
-          <a class="nav-link" href="{{url($menu_access->url.'/'.Nfs::Encrypt($menu_access->cms_menus_id))}}">
-            <span class="menu-icon">
-              <i class="mdi {{$menu_access->icon}}"></i>
-            </span>
-            <span class="menu-title">{{$menu_access->name}}</span>
-          </a>
-        </li>
+            @php
+              $sub = Nfs::submenuSidebar(Session::get('id'),$menu_access->cms_menus_id);
+            @endphp
+
+            @if(count($sub) == 0)
+          
+              <li class="nav-item menu-items @if($link==$menu_access->url) nav-active @endif">
+                <a class="nav-link" href="{{url($menu_access->url.'/'.Nfs::Encrypt($menu_access->cms_menus_id))}}">
+                  <span class="menu-icon">
+                    <i class="mdi {{$menu_access->icon}}"></i>
+                  </span>
+                  <span class="menu-title">{{$menu_access->name}}</span>
+                </a>
+              </li>
+
+            @else
+
+            <li class="nav-item menu-items">
+              <a class="nav-link" data-toggle="collapse" href="#submenu{{$menu_access->cms_menus_id}}" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-icon">
+                  <i class="mdi {{$menu_access->icon}}"></i>
+                </span>
+                <span class="menu-title">{{$menu_access->name}}</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="submenu{{$menu_access->cms_menus_id}}">
+                <ul class="nav flex-column sub-menu">
+
+                  @foreach($sub as $submenu)
+                    <li class="nav-item @if($link==$submenu->url) nav-active @endif"> 
+                      <a class="nav-link" href="{{url($submenu->url.'/'.Nfs::Encrypt($submenu->cms_menus_id))}}">
+                          <span class="menu-icon">
+                            <i class="mdi {{$submenu->icon}}"></i>
+                          </span>
+                          <span class="menu-title">{{$submenu->name}}</span>
+                      </a>
+                    </li>
+                  @endforeach
+
+                </ul>
+              </div>
+            </li>
+
+            @endif
             
         @endforeach
 
