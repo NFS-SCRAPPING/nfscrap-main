@@ -25,6 +25,9 @@ use Wa;
 #MODEL
 use App\Models\User;
 use App\Models\Cms\Role;
+use App\Models\Cms\CmsEmails;
+
+use App\Mail\Emails;
 
 class AuthController extends Controller
 {
@@ -107,6 +110,38 @@ class AuthController extends Controller
         $request->validate([
             'email'     => 'required|email:rfc,dns',
         ]);
+
+        // check users
+
+        $check=User::where('email',$request->email)->first();
+
+            if($check){
+
+                $str = Str::random(6);
+
+                $data['password'] = Hash::make($str);
+
+                //update password
+                $update=User::where('email',$request->email)->update($data);
+
+                if($update){
+                    //DATA TEMPLATE PASSWORD
+                    $template = CmsEmails::where('slug','forgot_password')->first();
+                    $setting  = [
+                        "password"=>$str,
+                        "email"   =>$request->email
+                    ];
+
+                    Mail::to($request->email)->send(new Emails($template,$setting));
+                    return back()->with('success','success update password, please check email '.$request->email);
+                    
+                }else{
+                    return back()->with('error','failed update password, please try again');
+
+                }
+            }else{
+                return back()->with('error','email not found, please check again');
+            }
     }
 
     /**

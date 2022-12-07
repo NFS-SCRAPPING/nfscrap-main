@@ -26,7 +26,7 @@ class CmsEmails extends Model
 
         if($request->file('image')){
 
-            $data['image']=Helper::image($request->file('image'),'settings');
+            $data['image']=Helper::image($request->file('image'),'emails');
         }
 
         $data['name']=$request->name;

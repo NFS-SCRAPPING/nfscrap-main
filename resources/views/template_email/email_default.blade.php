@@ -75,18 +75,20 @@
     <!-- HIDDEN PREHEADER TEXT -->
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <!-- LOGO -->
+        @if($image != '')
         <tr>
             <td bgcolor="#ffffff" align="center" style="padding: 0px 10px 0px 10px;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#f4f4f4" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111;
                          font-family: 'helvetica'; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <img src="https://enterlineit.com/emails/farm.jpg" width="100%" height="100%" style="display: block; border: 0px;" />
+                            <img src="{{url('storage/'.$image)}}" width="100%" height="100%" style="display: block; border: 0px;" />
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
+        @endif
 
         <tr>
             <td bgcolor="#ffffff" align="center" style="padding: 0px 10px 0px 10px;">
@@ -97,37 +99,62 @@
                             <p style="margin: 0;">Halo {{$email}}</p>
                         </td>
                     </tr>
+
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 5px 10px 5px 30px; color: #666666; 
                         font-family: 'helvetica'; font-size: 14px; font-weight: 400; line-height: 25px;">
                             <p style="margin: 0;">
-                                Kamu telah mengajukan permintaan untuk mereset password akun Centra-Farm 
-                                gunakan password dibawah ini untuk login di aplikasi.
+                                @php
+                                    echo $content;
+                                @endphp
                             </p>
                            
                         </td>
-                        
                     </tr>
+
+                    @if($data)
                     <tr>
-                        <td bgcolor="#ffffff" align="left">
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
-                                        <table border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td align="center">{{$password}}</td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
+                        <td bgcolor="#ffffff" align="left" style="padding: 5px 10px 5px 30px; color: #666666; 
+                        font-family: 'helvetica'; font-size: 14px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0;">
+                                @php
+                                    echo $data;
+                                @endphp
+                            </p>
+                           
                         </td>
-                    </tr> <!-- COPY -->
+                    </tr>
+                    @endif
+
+                    <tr>
+                        <td bgcolor="#ffffff" align="left" style="padding: 5px 10px 5px 30px; color: #666666; 
+                        font-family: 'helvetica'; font-size: 14px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0;">
+                                @php
+                                    echo $description;
+                                @endphp
+                            </p>
+                           
+                        </td>
+                    </tr>
+
+                    @if($link != '')
+                    <tr>
+                        <td bgcolor="#ffffff" align="left" style="padding: 5px 10px 5px 30px; color: #666666; 
+                        font-family: 'helvetica'; font-size: 14px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0;">
+                                {{$link}}
+                            </p>
+                           
+                        </td>
+                    </tr>
+                    @endif
+
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; 
                         border-radius: 0px 0px 4px 4px; color: #666666;
                          font-family: 'helvetica'; font-size: 14px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Terimakasih,<br>Salam dari <br>Nonscrap !</p>
+                            <p style="margin: 0;">Terimakasih,<br>Salam dari <br>{{$from_name}} !</p>
                         </td>
                     </tr>
                 </table>
@@ -141,10 +168,8 @@
                         border-radius: 4px 4px 4px 4px; color: #565658; font-family: 'helvetica'; font-size: 14px; font-weight: 400; line-height: 25px;">
                             <h2 style="font-size: 20px; font-weight: 400; text-align:center;color: #463a3a; margin: 0;">Customer Support</h2>
                             <br>
-                            <img src="https://komship.komerce.id/images/mail.png" />
-                            <a href="mailto:support@komship.id">support@centra-farm.com</a>
+                            <a href="mailto:{{$from_email}}">{{$from_email}}</a>
                             &nbsp;&nbsp;
-                            <img src="https://komship.komerce.id/images/telfon.png" /><a href="tel:6281227931840">+62 812-2793-1840</a></p>
 						    <p style="margin-bottom: 10px; text-align: center;">Copyright {{date('Y')}}</p>
                         </td>
                     </tr>

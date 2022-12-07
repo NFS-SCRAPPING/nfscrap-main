@@ -31,16 +31,18 @@ class Emails extends Mailable
      */
     public function build()
     {
-        return $this->from($this->setting->email , $this->content->from_name)
+        return $this->from($this->content->from_email , $this->content->from_name)
                     ->subject($this->content->subject)
                     ->markdown('template_email.email_default', 
                         [
-                            'password'   => $this->password, 
-                            'email'      => ucwords($this->email),
+                            'data'       => $this->setting['password'], 
+                            'email'      => ucwords($this->setting['email']),
                             'content'    => $this->content->content,
                             'from_name'  => $this->content->from_name,
                             'from_email' => $this->content->from_email,
-                            'description'=> $this->content->description
+                            'description'=> $this->content->description,
+                            'link'       =>'',
+                            'image'      => $this->content->image
                          ]);
     }
 }
