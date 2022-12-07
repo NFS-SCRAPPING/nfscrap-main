@@ -12,7 +12,7 @@
               <h4 class="card-title">{{$title}}</h4>
               </p>
               <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table">
                   <thead>
                     <tr>
                       <th class="head-white">role</th>

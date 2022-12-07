@@ -17,6 +17,7 @@ use App\Http\Controllers\Cms\CmsRoleAccessController;
 use App\Http\Controllers\Cms\UsersController;
 use App\Http\Controllers\Cms\CmsMenusDetailController;
 use App\Http\Controllers\Cms\CmsEmailsController;
+use App\Http\Controllers\Cms\CmsDocumentController;
 
 // MANAGEMENT CLASS
 use App\Http\Controllers\Microservice\LinkedinController;
@@ -158,6 +159,8 @@ Route::middleware(['web'])->group(function () {
                     Route::get('emails/destroy/{id}',[CmsEmailsController::class, 'destroy'])->name('emails-destroy');
                     Route::post('emails/store',[CmsEmailsController::class, 'store'])->name('emails-store');
                     Route::post('emails/update',[CmsEmailsController::class, 'update'])->name('emails-update');
+
+                    Route::get('document',[CmsDocumentController::class, 'index'])->name('document');
             });
 
         });

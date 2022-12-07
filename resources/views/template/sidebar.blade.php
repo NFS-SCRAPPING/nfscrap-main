@@ -196,6 +196,15 @@
             <span class="menu-title">Email Templates</span>
           </a>
         </li>
+
+        <li class="nav-item menu-items @if($link=='cms_document') nav-active @endif">
+          <a class="nav-link" href="{{url('admin/document')}}">
+            <span class="menu-icon">
+              <i class="mdi mdi-file-document-box"></i>
+            </span>
+            <span class="menu-title">Documentation</span>
+          </a>
+        </li>
       @endauth
       @endif
 

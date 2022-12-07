@@ -12,9 +12,8 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">{{$title}}</h4>
-                    </p>
                     <div class="table-responsive">
-                      <table class="table table-hover">
+                      <table class="table table">
                         <thead>
                           <tr>
                             <th>Name</th>
