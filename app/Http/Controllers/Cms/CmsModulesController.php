@@ -175,9 +175,9 @@ class CmsModulesController extends Controller
         $check = CmsMenus::where('cms_modules_id',$id)->first();
 
         if($check){
-            Nfs::deleteAllMenusRelasi($check->id);
-
             $delete_folder_view = Nfs::deleteFolderAllGenerator($id,$check->id);
+            
+            Nfs::deleteAllMenusRelasi($check->id);
         }
 
         //delete modules

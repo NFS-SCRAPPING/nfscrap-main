@@ -337,17 +337,17 @@ class Nfs {
 
         //delete file controller
         $controller = app_path('Http/Controllers/'.$fetch->file_controller.'/'.$fetch->controller.'.php');
-        if(File::exists(app_path($controller ))){
-            File::delete(app_path($controller ));
+        if(file_exists($controller)){
+            File::delete($controller);
         }
 
         //delete file model
         $model = app_path('Models/'.$fetch->file_model.'/'.$fetch->model.'.php');
-        if(File::exists(app_path($model ))){
-            File::delete(app_path($model ));
+        if(file_exists($model)){
+            File::delete($model);
         }
 
-        return false;
+        return true;
 
     }
 
